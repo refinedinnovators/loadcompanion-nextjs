@@ -1,7 +1,7 @@
-"use client"
+'use client'
 
-import { useState } from "react"
-import { Mail, Copy, Check } from "lucide-react"
+import { useState } from 'react'
+import { Check, Copy, Mail } from 'lucide-react'
 
 interface EmailCardProps {
   email: string
@@ -10,7 +10,12 @@ interface EmailCardProps {
   benefits: string[]
 }
 
-export function EmailCard({ email, label, description, benefits }: EmailCardProps) {
+export function EmailCard({
+  email,
+  label,
+  description,
+  benefits,
+}: EmailCardProps) {
   const [copied, setCopied] = useState(false)
 
   const copyEmail = () => {
@@ -22,7 +27,9 @@ export function EmailCard({ email, label, description, benefits }: EmailCardProp
   return (
     <div className="relative rounded-xl bg-background p-8 h-full border border-muted shadow-sm">
       <div className="absolute top-6 right-6">
-        <span className="bg-primary text-xs font-medium px-4 py-1.5 rounded-full text-primary-foreground">{label}</span>
+        <span className="bg-primary text-xs font-medium px-4 py-1.5 rounded-full text-primary-foreground">
+          {label}
+        </span>
       </div>
 
       <div className="flex items-start gap-4">
@@ -64,4 +71,3 @@ export function EmailCard({ email, label, description, benefits }: EmailCardProp
     </div>
   )
 }
-

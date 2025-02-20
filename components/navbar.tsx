@@ -1,11 +1,11 @@
-"use client"
+'use client'
 
-import type React from "react"
+import type React from 'react'
+import { useState } from 'react'
+import Link from 'next/link'
+import { Menu, X } from 'lucide-react'
 
-import { useState } from "react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
+import { Button } from '@/components/ui/button'
 
 const navbarStyles = `
 .text-shadow {
@@ -16,11 +16,14 @@ const navbarStyles = `
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+  const scrollToSection = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string
+  ) => {
     e.preventDefault()
     const section = document.getElementById(sectionId)
     if (section) {
-      section.scrollIntoView({ behavior: "smooth" })
+      section.scrollIntoView({ behavior: 'smooth' })
     }
     setIsMenuOpen(false)
   }
@@ -32,7 +35,11 @@ export function Navbar() {
         <div className="flex items-center space-x-3">
           <Link href="/" className="flex items-center space-x-3">
             <div className="flex-shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 142.29291 142.29291" className="h-10 w-10">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 142.29291 142.29291"
+                className="h-10 w-10"
+              >
                 <defs>
                   <linearGradient
                     id="linear-gradient-10"
@@ -68,32 +75,37 @@ export function Navbar() {
                 </g>
               </svg>
             </div>
-            <span className="font-bold text-lg sm:text-xl text-white text-shadow">Load Companion</span>
+            <span className="font-bold text-lg sm:text-xl text-white text-shadow">
+              Load Companion
+            </span>
           </Link>
         </div>
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
           <Link
             href="#features"
-            onClick={(e) => scrollToSection(e, "features")}
+            onClick={(e) => scrollToSection(e, 'features')}
             className="text-gray-300 transition-colors hover:text-white"
           >
             Features
           </Link>
           <Link
             href="#pricing"
-            onClick={(e) => scrollToSection(e, "pricing")}
+            onClick={(e) => scrollToSection(e, 'pricing')}
             className="text-gray-300 transition-colors hover:text-white"
           >
             Pricing
           </Link>
           <Link
             href="#faq"
-            onClick={(e) => scrollToSection(e, "faq")}
+            onClick={(e) => scrollToSection(e, 'faq')}
             className="text-gray-300 transition-colors hover:text-white"
           >
             FAQ
           </Link>
-          <Link href="/contact" className="text-gray-300 transition-colors hover:text-white">
+          <Link
+            href="/contact"
+            className="text-gray-300 transition-colors hover:text-white"
+          >
             Contact Us
           </Link>
         </nav>
@@ -119,15 +131,30 @@ export function Navbar() {
               Install Chrome Extension
             </a>
           </Button>
-          <Button size="sm" className="bg-[#4F46E5] text-white hover:bg-[#4338CA] transition-colors duration-300">
-            <a href="https://webapp.loadcompanion.com/#/auth" target="_blank" rel="noopener noreferrer">
+          <Button
+            size="sm"
+            className="bg-[#4F46E5] text-white hover:bg-[#4338CA] transition-colors duration-300"
+          >
+            <a
+              href="https://webapp.loadcompanion.com/#/auth"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Sign In
             </a>
           </Button>
         </div>
         <div className="md:hidden">
-          <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </Button>
         </div>
       </div>
@@ -136,26 +163,29 @@ export function Navbar() {
           <nav className="flex flex-col items-start space-y-4 p-4 text-sm font-medium">
             <Link
               href="#features"
-              onClick={(e) => scrollToSection(e, "features")}
+              onClick={(e) => scrollToSection(e, 'features')}
               className="text-gray-300 transition-colors hover:text-white w-full"
             >
               Features
             </Link>
             <Link
               href="#pricing"
-              onClick={(e) => scrollToSection(e, "pricing")}
+              onClick={(e) => scrollToSection(e, 'pricing')}
               className="text-gray-300 transition-colors hover:text-white w-full"
             >
               Pricing
             </Link>
             <Link
               href="#faq"
-              onClick={(e) => scrollToSection(e, "faq")}
+              onClick={(e) => scrollToSection(e, 'faq')}
               className="text-gray-300 transition-colors hover:text-white w-full"
             >
               FAQ
             </Link>
-            <Link href="/contact" className="text-gray-300 transition-colors hover:text-white w-full">
+            <Link
+              href="/contact"
+              className="text-gray-300 transition-colors hover:text-white w-full"
+            >
               Contact Us
             </Link>
             <div className="flex flex-col space-y-2 w-full">
@@ -180,8 +210,15 @@ export function Navbar() {
                   Install Chrome Extension
                 </a>
               </Button>
-              <Button size="sm" className="w-full bg-[#4F46E5] text-white hover:bg-[#4338CA]">
-                <a href="https://webapp.loadcompanion.com/#/auth" target="_blank" rel="noopener noreferrer">
+              <Button
+                size="sm"
+                className="w-full bg-[#4F46E5] text-white hover:bg-[#4338CA]"
+              >
+                <a
+                  href="https://webapp.loadcompanion.com/#/auth"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Sign In
                 </a>
               </Button>
@@ -192,4 +229,3 @@ export function Navbar() {
     </header>
   )
 }
-

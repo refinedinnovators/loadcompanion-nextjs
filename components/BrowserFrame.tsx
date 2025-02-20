@@ -1,4 +1,4 @@
-import type React from "react"
+import type React from 'react'
 
 interface BrowserFrameProps {
   children: React.ReactNode
@@ -26,4 +26,3 @@ export function BrowserFrame({ children, title }: BrowserFrameProps) {
     </div>
   )
 }
-

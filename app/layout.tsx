@@ -1,19 +1,36 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import JsonLd from "@/components/json-ld"
-import "./globals.css"
+import type React from 'react'
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
 
-const inter = Inter({ subsets: ["latin"] })
+import { Analytics } from '@/components/analytics'
+import JsonLd from '@/components/json-ld'
+import { WebVitals } from '@/components/web-vitals'
+
+import './globals.css'
+import './globals.css'
+
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://loadcompanion.com'),
   title: {
     default: 'Load Companion - The One-Click Booking Solution for Trucking',
-    template: '%s | Load Companion'
+    template: '%s | Load Companion',
   },
-  description: 'Streamline your trucking operations with Load Companion. Automate load booking, rate calculations, and email communications. Integrated with DAT Power, DAT One, and Sylectus.',
-  keywords: ['load booking', 'trucking software', 'DAT Power', 'DAT One', 'Sylectus', 'dispatch automation', 'freight management', 'transportation management system', 'TMS', 'load board automation'],
+  description:
+    'Streamline your trucking operations with Load Companion. Automate load booking, rate calculations, and email communications. Integrated with DAT Power, DAT One, and Sylectus.',
+  keywords: [
+    'load booking',
+    'trucking software',
+    'DAT Power',
+    'DAT One',
+    'Sylectus',
+    'dispatch automation',
+    'freight management',
+    'transportation management system',
+    'TMS',
+    'load board automation',
+  ],
   authors: [{ name: 'Refined Innovators LLC' }],
   creator: 'Refined Innovators LLC',
   publisher: 'Refined Innovators LLC',
@@ -31,11 +48,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/images/logos/lc-logo.png', sizes: '512x512', type: 'image/png' },
-      { url: '/favicon.ico', sizes: 'any' }
+      { url: '/favicon.ico', sizes: 'any' },
     ],
     apple: [
-      { url: '/images/logos/lc-logo.png', sizes: '512x512', type: 'image/png' }
-    ]
+      { url: '/images/logos/lc-logo.png', sizes: '512x512', type: 'image/png' },
+    ],
   },
   manifest: '/manifest.json',
   openGraph: {
@@ -44,36 +61,38 @@ export const metadata: Metadata = {
     url: 'https://loadcompanion.com',
     siteName: 'Load Companion',
     title: 'Load Companion - Automate Your Load Booking Process',
-    description: 'Streamline your trucking operations with Load Companion. One-click booking, automated rate calculations, and seamless email integration for DAT and Sylectus.',
+    description:
+      'Streamline your trucking operations with Load Companion. One-click booking, automated rate calculations, and seamless email integration for DAT and Sylectus.',
     images: [
       {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Load Companion Dashboard'
-      }
-    ]
+        alt: 'Load Companion Dashboard',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Load Companion - Trucking Automation Made Simple',
-    description: 'Automate your load booking process with Load Companion. Integrated with DAT and Sylectus.',
+    description:
+      'Automate your load booking process with Load Companion. Integrated with DAT and Sylectus.',
     images: ['/images/twitter-image.jpg'],
-    creator: '@loadcompanion'
+    creator: '@loadcompanion',
   },
   verification: {
     google: 'G-XQT5NL73P7',
     other: {
       'facebook-domain-verification': 'xxxxxxxxxxxxxxxxxxxxxxx',
-      'msvalidate.01': 'xxxxxxxxxxxxxxxx'
-    }
+      'msvalidate.01': 'xxxxxxxxxxxxxxxx',
+    },
   },
   alternates: {
     canonical: 'https://loadcompanion.com',
     languages: {
       'en-US': 'https://loadcompanion.com',
-    }
-  }
+    },
+  },
 }
 
 export default function RootLayout({
@@ -84,10 +103,22 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <meta name="msapplication-TileImage" content="/images/logos/lc-logo.png" />
+        <meta
+          name="msapplication-TileImage"
+          content="/images/logos/lc-logo.png"
+        />
         <meta name="msapplication-TileColor" content="#ffffff" />
-        <link rel="icon" type="image/png" sizes="512x512" href="/images/logos/lc-logo.png" />
-        <link rel="apple-touch-icon" sizes="512x512" href="/images/logos/lc-logo.png" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="512x512"
+          href="/images/logos/lc-logo.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="512x512"
+          href="/images/logos/lc-logo.png"
+        />
         <meta name="theme-color" content="#4F46E5" />
         <meta name="application-name" content="Load Companion" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -99,12 +130,10 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} antialiased`}>
         <JsonLd />
+        <Analytics />
+        <WebVitals />
         {children}
       </body>
     </html>
   )
 }
-
-
-
-import './globals.css'

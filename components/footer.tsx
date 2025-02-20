@@ -1,7 +1,7 @@
-import Link from "next/link"
+import React from 'react'
 import Image from 'next/image'
-import { Facebook, Instagram, Mail, Send } from "lucide-react"
-import React from "react"
+import Link from 'next/link'
+import { Facebook, Instagram, Mail, Send } from 'lucide-react'
 
 interface LinkGroup {
   title: string
@@ -28,74 +28,74 @@ interface FooterType {
 
 const footerData: FooterType = {
   description:
-    "Load Companion is designed to streamline the load booking process, enhance productivity, and simplify workload management for users on platforms like DAT Power, DAT One, and Sylectus.",
-  copyright: "Refined Innovators LLC, All Rights Reserved",
-  email: "help@refinedinnovators.com",
+    'Load Companion is designed to streamline the load booking process, enhance productivity, and simplify workload management for users on platforms like DAT Power, DAT One, and Sylectus.',
+  copyright: 'Refined Innovators LLC, All Rights Reserved',
+  email: 'help@refinedinnovators.com',
   telegram: {
-    title: "Telegram",
-    link: "https://t.me/loadcompanion",
+    title: 'Telegram',
+    link: 'https://t.me/loadcompanion',
   },
   facebook: {
-    title: "Facebook",
-    link: "https://www.facebook.com/share/7bYqG7AcLpRM6ftm/?mibextid=eQY6cl",
+    title: 'Facebook',
+    link: 'https://www.facebook.com/share/7bYqG7AcLpRM6ftm/?mibextid=eQY6cl',
   },
   instagram: {
-    title: "Instagram",
-    link: "https://www.instagram.com/loadcompanion",
+    title: 'Instagram',
+    link: 'https://www.instagram.com/loadcompanion',
   },
 }
 
 const getLinkGroups = (): LinkGroup[] => [
   {
-    title: "Pages",
+    title: 'Pages',
     links: [
       {
-        title: "Features",
-        href: "/#features",
+        title: 'Features',
+        href: '/#features',
       },
       {
-        title: "Pricing",
-        href: "/#pricing",
+        title: 'Pricing',
+        href: '/#pricing',
       },
       {
-        title: "FAQ",
-        href: "/#faq",
+        title: 'FAQ',
+        href: '/#faq',
       },
       {
-        title: "Get Started",
-        href: "/get-started",
+        title: 'Get Started',
+        href: '/get-started',
       },
     ],
   },
   {
-    title: "Support",
+    title: 'Support',
     links: [
       {
-        title: "Submit Bugs",
+        title: 'Submit Bugs',
         href: `mailto:${footerData.email}?subject=Bug%20Report`,
       },
       {
-        title: "Contact Us",
-        href: "/contact",
+        title: 'Contact Us',
+        href: '/contact',
       },
     ],
   },
   {
-    title: "Legal",
+    title: 'Legal',
     links: [
       {
-        title: "Terms & Conditions",
-        href: "/terms",
+        title: 'Terms & Conditions',
+        href: '/terms',
       },
       {
-        title: "Privacy Policy",
-        href: "/privacy",
+        title: 'Privacy Policy',
+        href: '/privacy',
       },
     ],
   },
   {
-    title: "Contact",
-    links: [{ title: "Email", href: `mailto:${footerData.email}`, icon: Mail }],
+    title: 'Contact',
+    links: [{ title: 'Email', href: `mailto:${footerData.email}`, icon: Mail }],
   },
 ]
 
@@ -117,7 +117,9 @@ export function Footer() {
                 priority={true}
                 quality={90}
               />
-              <span className="font-bold text-xl text-white">Load Companion</span>
+              <span className="font-bold text-xl text-white">
+                Load Companion
+              </span>
             </Link>
             <p className="text-base text-gray-400">{footerData.description}</p>
             <div className="flex space-x-6">
@@ -154,13 +156,21 @@ export function Footer() {
           <div className="mt-12 grid grid-cols-1 gap-8 xl:col-span-2 xl:mt-0 sm:grid-cols-2 md:grid-cols-4">
             {linkGroups.map((group) => (
               <div key={group.title}>
-                <h3 className="text-base font-medium text-white">{group.title}</h3>
+                <h3 className="text-base font-medium text-white">
+                  {group.title}
+                </h3>
                 <ul className="mt-4 space-y-4">
                   {group.links.map((link) => (
                     <li key={link.title}>
-                      {link.href.startsWith("mailto:") ? (
-                        <a href={link.href} className="text-base text-gray-400 hover:text-[#4F46E5] flex items-center">
-                          {link.icon && React.createElement(link.icon, { className: "h-5 w-5 mr-2" })}
+                      {link.href.startsWith('mailto:') ? (
+                        <a
+                          href={link.href}
+                          className="text-base text-gray-400 hover:text-[#4F46E5] flex items-center"
+                        >
+                          {link.icon &&
+                            React.createElement(link.icon, {
+                              className: 'h-5 w-5 mr-2',
+                            })}
                           {link.title}
                         </a>
                       ) : (
@@ -168,7 +178,10 @@ export function Footer() {
                           href={link.href}
                           className="text-base text-gray-400 hover:text-[#4F46E5] flex items-center"
                         >
-                          {link.icon && React.createElement(link.icon, { className: "h-5 w-5 mr-2" })}
+                          {link.icon &&
+                            React.createElement(link.icon, {
+                              className: 'h-5 w-5 mr-2',
+                            })}
                           {link.title}
                         </Link>
                       )}
@@ -188,4 +201,3 @@ export function Footer() {
     </footer>
   )
 }
-

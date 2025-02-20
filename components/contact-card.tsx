@@ -1,17 +1,30 @@
-"use client"
+'use client'
 
-import type { LucideIcon } from "lucide-react"
-import { motion } from "framer-motion"
+import { motion } from 'framer-motion'
+import { Facebook, HelpCircle, Instagram, Send } from 'lucide-react'
+
+const iconMap = {
+  Send,
+  Facebook,
+  Instagram,
+}
 
 interface ContactCardProps {
-  icon: LucideIcon
+  iconName: keyof typeof iconMap
   title: string
   content: string
   link: string
   className?: string
 }
 
-export function ContactCard({ icon: Icon, title, content, link, className = "" }: ContactCardProps) {
+export function ContactCard({
+  iconName,
+  title,
+  content,
+  link,
+  className = '',
+}: ContactCardProps) {
+  const Icon = iconMap[iconName] || HelpCircle
   return (
     <motion.a
       href={link}
@@ -29,4 +42,3 @@ export function ContactCard({ icon: Icon, title, content, link, className = "" }
     </motion.a>
   )
 }
-

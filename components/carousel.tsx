@@ -1,8 +1,13 @@
-"use client"
+'use client'
 
-import { useState, useEffect, useCallback } from "react"
-import { InfoIcon as InfoCircle, X, ChevronLeft, ChevronRight } from "lucide-react"
+import { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image'
+import {
+  ChevronLeft,
+  ChevronRight,
+  InfoIcon as InfoCircle,
+  X,
+} from 'lucide-react'
 
 type Pointer = {
   x: number
@@ -27,17 +32,22 @@ const determineTooltipPosition = (pointerX: number, pointerY: number) => {
   const isLeft = pointerX > 50
   const isTop = pointerY > 50
   return {
-    verticalClass: isTop ? "bottom-[calc(100%+6px)]" : "top-[calc(100%+6px)]",
-    horizontalClass: isLeft ? "right-0" : "left-0",
+    verticalClass: isTop ? 'bottom-[calc(100%+6px)]' : 'top-[calc(100%+6px)]',
+    horizontalClass: isLeft ? 'right-0' : 'left-0',
   }
 }
 
 export function Carousel({ images, onSlideChange }: CarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [activePointerIndex, setActivePointerIndex] = useState<number | null>(null)
+  const [activePointerIndex, setActivePointerIndex] = useState<number | null>(
+    null
+  )
   const [isHovered, setIsHovered] = useState(false)
   const [modalGif, setModalGif] = useState<string | null>(null)
-  const [gifDimensions, setGifDimensions] = useState<{ width: number; height: number } | null>(null)
+  const [gifDimensions, setGifDimensions] = useState<{
+    width: number
+    height: number
+  } | null>(null)
 
   const closeModal = useCallback(() => {
     setModalGif(null)
@@ -48,7 +58,7 @@ export function Carousel({ images, onSlideChange }: CarouselProps) {
     setModalGif(gif)
     if (typeof window !== 'undefined') {
       const img = new window.Image()
-      img.crossOrigin = "anonymous"
+      img.crossOrigin = 'anonymous'
       img.src = gif
       img.onload = () => {
         const maxWidth = window.innerWidth * 0.8
@@ -103,21 +113,24 @@ export function Carousel({ images, onSlideChange }: CarouselProps) {
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "ArrowLeft") {
+      if (event.key === 'ArrowLeft') {
         prevSlide()
-      } else if (event.key === "ArrowRight") {
+      } else if (event.key === 'ArrowRight') {
         nextSlide()
-      } else if (event.key === "Escape" && modalGif) {
+      } else if (event.key === 'Escape' && modalGif) {
         closeModal()
       }
     }
 
-    window.addEventListener("keydown", handleKeyDown)
-    return () => window.removeEventListener("keydown", handleKeyDown)
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
   }, [modalGif, closeModal, nextSlide, prevSlide])
 
   return (
-    <div className="relative w-full overflow-hidden bg-gray-800 shadow-inner" aria-live="polite">
+    <div
+      className="relative w-full overflow-hidden bg-gray-800 shadow-inner"
+      aria-live="polite"
+    >
       {/* Slides */}
       <div
         className="flex transition-transform duration-500"
@@ -129,7 +142,7 @@ export function Carousel({ images, onSlideChange }: CarouselProps) {
             className="w-full flex-shrink-0 flex flex-col items-center relative"
             aria-hidden={index !== currentIndex}
           >
-            <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
+            <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
               <div className="absolute inset-0">
                 <Image
                   src={image.src}
@@ -143,16 +156,17 @@ export function Carousel({ images, onSlideChange }: CarouselProps) {
 
               {/* Pointers */}
               {image.pointers?.map((pointer, idx) => {
-                const { verticalClass, horizontalClass } = determineTooltipPosition(pointer.x, pointer.y)
+                const { verticalClass, horizontalClass } =
+                  determineTooltipPosition(pointer.x, pointer.y)
 
                 return (
                   <div
                     key={idx}
-                    className={`absolute ${activePointerIndex === idx ? "z-20" : "z-10"}`}
+                    className={`absolute ${activePointerIndex === idx ? 'z-20' : 'z-10'}`}
                     style={{
                       top: `${pointer.y}%`,
                       left: `${pointer.x}%`,
-                      transform: "translate(-50%, -50%)",
+                      transform: 'translate(-50%, -50%)',
                     }}
                   >
                     <div
@@ -166,7 +180,7 @@ export function Carousel({ images, onSlideChange }: CarouselProps) {
                     >
                       {/* Pointer */}
                       <div
-                        className={`relative w-3 h-3 sm:w-4 sm:h-4 flex items-center justify-center ${activePointerIndex === idx ? "z-20" : "z-10"}`}
+                        className={`relative w-3 h-3 sm:w-4 sm:h-4 flex items-center justify-center ${activePointerIndex === idx ? 'z-20' : 'z-10'}`}
                       >
                         <div className="absolute w-3 h-3 bg-[#FF9800] rounded-full animate-ping" />
                         <div className="relative w-2.5 h-2.5 bg-[#FF9800] rounded-full" />
@@ -182,10 +196,12 @@ export function Carousel({ images, onSlideChange }: CarouselProps) {
                           {pointer.gif && (
                             <div
                               className="mb-2 w-full flex justify-center cursor-pointer"
-                              onClick={() => pointer.gif && openModal(pointer.gif)}
+                              onClick={() =>
+                                pointer.gif && openModal(pointer.gif)
+                              }
                             >
                               <Image
-                                src={pointer.gif || "/placeholder.svg"}
+                                src={pointer.gif || '/placeholder.svg'}
                                 alt="Feature preview"
                                 width={150}
                                 height={150}
@@ -196,9 +212,13 @@ export function Carousel({ images, onSlideChange }: CarouselProps) {
                           )}
                           <div className="flex items-center gap-1">
                             <InfoCircle className="text-[#FF9800]" />
-                            <h4 className="font-bold text-[10px] sm:text-[12px] leading-tight">{pointer.title}</h4>
+                            <h4 className="font-bold text-[10px] sm:text-[12px] leading-tight">
+                              {pointer.title}
+                            </h4>
                           </div>
-                          <p className="text-[9px] sm:text-[11px] text-gray-600 leading-tight">{pointer.description}</p>
+                          <p className="text-[9px] sm:text-[11px] text-gray-600 leading-tight">
+                            {pointer.description}
+                          </p>
                         </div>
                       )}
                     </div>
@@ -232,7 +252,7 @@ export function Carousel({ images, onSlideChange }: CarouselProps) {
           <button
             key={idx}
             className={`w-3 h-3 rounded-full ${
-              idx === currentIndex ? "bg-white" : "bg-gray-400"
+              idx === currentIndex ? 'bg-white' : 'bg-gray-400'
             } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white`}
             onClick={() => {
               setCurrentIndex(idx)
@@ -276,4 +296,3 @@ export function Carousel({ images, onSlideChange }: CarouselProps) {
     </div>
   )
 }
-

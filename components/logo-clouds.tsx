@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 
 export type LogoCloudType = {
@@ -13,7 +13,7 @@ export type LogoCloudType = {
   className?: string
 }
 
-export function LogoClouds({ title, images, className = "" }: LogoCloudType) {
+export function LogoClouds({ title, images, className = '' }: LogoCloudType) {
   const scrollerRef = useRef<HTMLDivElement>(null)
   const [start, setStart] = useState(false)
 
@@ -50,28 +50,35 @@ export function LogoClouds({ title, images, className = "" }: LogoCloudType) {
     }
 
     checkWidth()
-    window.addEventListener("resize", checkWidth)
+    window.addEventListener('resize', checkWidth)
 
-    return () => window.removeEventListener("resize", checkWidth)
+    return () => window.removeEventListener('resize', checkWidth)
   }, [])
 
   return (
     <div className={`py-8 ${className}`}>
       {title && (
-        <p className="mb-6 text-center font-medium text-sm leading-relaxed tracking-wide text-gray-400">{title}</p>
+        <p className="mb-6 text-center font-medium text-sm leading-relaxed tracking-wide text-gray-400">
+          {title}
+        </p>
       )}
 
       <div className="relative max-w-full mx-auto overflow-hidden">
         <div
           ref={scrollerRef}
           className={`flex items-center space-x-20 ${
-            start ? "animate-scroll" : "[&_img]:opacity-0 [&_img]:animate-fade-in"
+            start
+              ? 'animate-scroll'
+              : '[&_img]:opacity-0 [&_img]:animate-fade-in'
           }`}
         >
           {images?.map((image, index) => (
-            <div key={index} className="flex-shrink-0 w-24 h-12 flex items-center justify-center">
+            <div
+              key={index}
+              className="flex-shrink-0 w-24 h-12 flex items-center justify-center"
+            >
               <Image
-                src={image.src || "/placeholder.svg"}
+                src={image.src || '/placeholder.svg'}
                 alt={image.alt}
                 width={64}
                 height={32}
@@ -87,4 +94,3 @@ export function LogoClouds({ title, images, className = "" }: LogoCloudType) {
     </div>
   )
 }
-

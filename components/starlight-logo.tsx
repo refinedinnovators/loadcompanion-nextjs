@@ -1,5 +1,6 @@
-"use client"
-import { useEffect, useRef } from "react"
+'use client'
+
+import { useEffect, useRef } from 'react'
 
 const starlightStyles = `
 @keyframes twinkle {
@@ -30,9 +31,9 @@ export function StarlightLogo() {
 
   useEffect(() => {
     if (svgRef.current) {
-      const paths = svgRef.current.querySelectorAll("path")
+      const paths = svgRef.current.querySelectorAll('path')
       paths.forEach((path, index) => {
-        path.classList.add("twinkle")
+        path.classList.add('twinkle')
         path.style.animationDelay = `${index * 0.2}s`
       })
     }
@@ -140,4 +141,3 @@ export function StarlightLogo() {
     </>
   )
 }
-

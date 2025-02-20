@@ -1,8 +1,7 @@
-"use client"
+'use client'
 
-import { useState, useEffect } from 'react'
-import Image from 'next/image'
-import { type StaticImageData } from 'next/image'
+import { useEffect, useState } from 'react'
+import Image, { type StaticImageData } from 'next/image'
 
 interface VideoProps {
   src: string | StaticImageData

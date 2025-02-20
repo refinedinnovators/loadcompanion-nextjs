@@ -1,4 +1,4 @@
-import type React from "react"
+import type React from 'react'
 
 interface TerminalProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -17,4 +17,3 @@ export function Terminal({ className, children, ...props }: TerminalProps) {
     </div>
   )
 }
-

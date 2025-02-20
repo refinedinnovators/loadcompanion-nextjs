@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef } from 'react'
 
 const starryStyles = `
 @keyframes twinkle {
@@ -31,8 +31,8 @@ export function StarryBackground() {
 
     // Create stars
     for (let i = 0; i < numberOfStars; i++) {
-      const star = document.createElement("div")
-      star.className = "star twinkle"
+      const star = document.createElement('div')
+      star.className = 'star twinkle'
 
       // Random size between 1-2px
       const size = Math.random() * 1 + 1
@@ -63,12 +63,11 @@ export function StarryBackground() {
         className="absolute inset-0 overflow-hidden bg-[#0A0A0B]"
         style={{
           backgroundImage: `url(/images/backgrounds/stars.png)`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "repeat",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'repeat',
         }}
       />
     </>
   )
 }
-

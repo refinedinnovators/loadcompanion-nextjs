@@ -1,11 +1,12 @@
-"use client"
+'use client'
 
-import { useRef, useEffect } from "react"
-import { motion } from "framer-motion"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { StarryBackground } from "@/components/starry-background"
-import { LogoClouds } from "@/components/logo-clouds"
+import { useEffect, useRef } from 'react'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
+
+import { LogoClouds } from '@/components/logo-clouds'
+import { StarryBackground } from '@/components/starry-background'
+import { Button } from '@/components/ui/button'
 
 const heroStyles = `
 @keyframes float {
@@ -32,26 +33,26 @@ const heroStyles = `
 `
 
 const logoCloudContent = {
-  title: "Integrated with largest load boards and email providers",
+  title: 'Integrated with largest load boards and email providers',
   images: [
     {
-      src: "/images/logos/dat-one.png",
-      alt: "DAT One",
+      src: '/images/logos/dat-one.png',
+      alt: 'DAT One',
       height: 55,
     },
     {
-      src: "/images/logos/sylectus.svg",
-      alt: "Sylectus",
+      src: '/images/logos/sylectus.svg',
+      alt: 'Sylectus',
       height: 55,
     },
     {
-      src: "/images/logos/gmail.svg",
-      alt: "Gmail",
+      src: '/images/logos/gmail.svg',
+      alt: 'Gmail',
       height: 36,
     },
     {
-      src: "/images/logos/outlook.svg",
-      alt: "Outlook",
+      src: '/images/logos/outlook.svg',
+      alt: 'Outlook',
       height: 36,
     },
   ],
@@ -68,34 +69,40 @@ export function Hero() {
       const offset = 10
 
       if (ref.current) {
-        const elements = (ref.current as HTMLElement).querySelectorAll(".parallax")
+        const elements = (ref.current as HTMLElement).querySelectorAll(
+          '.parallax'
+        )
         elements.forEach((el) => {
-          const speedX = (el as HTMLElement).dataset.speedx || "0"
-          const speedY = (el as HTMLElement).dataset.speedy || "0"
-          const speedZ = (el as HTMLElement).dataset.speedz || "0"
-          const rotateSpeed = (el as HTMLElement).dataset.rotation || "0"
+          const element = el as HTMLElement
+          const speedX = element.dataset.speedx || '0'
+          const speedY = element.dataset.speedy || '0'
+          const speedZ = element.dataset.speedz || '0'
+          const rotateSpeed = element.dataset.rotation || '0'
 
           const zValue = Number.parseFloat(speedZ) * offset
           const rotateValue = Number.parseFloat(rotateSpeed) * offset
 
-          el.style.transform = `translateX(calc(-50% + ${-moveX * Number.parseFloat(speedX)}px)) translateY(calc(-50% + ${
+          element.style.transform = `translateX(calc(-50% + ${-moveX * Number.parseFloat(speedX)}px)) translateY(calc(-50% + ${
             -moveY * Number.parseFloat(speedY)
           }px)) perspective(2300px) translateZ(${zValue}px) rotateY(${rotateValue}deg)`
         })
       }
     }
 
-    window.addEventListener("mousemove", handleMouseMove)
+    window.addEventListener('mousemove', handleMouseMove)
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
+      window.removeEventListener('mousemove', handleMouseMove)
     }
   }, [])
 
   return (
     <>
       <style>{heroStyles}</style>
-      <header ref={ref} className="relative overflow-hidden bg-[#0A0A0B] py-8 md:py-16">
+      <header
+        ref={ref}
+        className="relative overflow-hidden bg-[#0A0A0B] py-8 md:py-16"
+      >
         <StarryBackground />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="relative flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12">
@@ -148,8 +155,9 @@ export function Hero() {
                   The One-Click Booking Solution
                 </h1>
                 <p className="text-base sm:text-lg text-gray-300 mb-6">
-                  Streamline your trucking operations with Load Companion. From one-click booking to real-time rate
-                  calculations, we've got you covered.
+                  Streamline your trucking operations with Load Companion. From
+                  one-click booking to real-time rate calculations, we've got
+                  you covered.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                   <Button className="w-full sm:w-auto bg-[#4F46E5] text-white hover:bg-[#4338CA] text-base sm:text-lg py-2 px-4 sm:px-6">
@@ -159,7 +167,9 @@ export function Hero() {
                     variant="outline"
                     className="w-full sm:w-auto text-[#4F46E5] border-[#4F46E5] hover:bg-[#4F46E5] hover:text-white text-base sm:text-lg py-2 px-4 sm:px-6"
                   >
-                    <Link href="https://www.youtube.com/embed/uWPYq7k2wAE">Watch Demo</Link>
+                    <Link href="https://www.youtube.com/embed/uWPYq7k2wAE">
+                      Watch Demo
+                    </Link>
                   </Button>
                 </div>
               </motion.div>
@@ -204,11 +214,13 @@ export function Hero() {
             </div>
           </div>
           <div className="mt-12 -mx-4 sm:-mx-6 lg:-mx-8">
-            <LogoClouds {...logoCloudContent} className="bg-gray-900/30 backdrop-blur-sm py-6" />
+            <LogoClouds
+              {...logoCloudContent}
+              className="bg-gray-900/30 backdrop-blur-sm py-6"
+            />
           </div>
         </div>
       </header>
     </>
   )
 }
-
