@@ -6,6 +6,8 @@ const withBundleAnalyzer = bundleAnalyzer({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
+  generateBuildId: () => 'build-' + Date.now(),
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
@@ -18,7 +20,7 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     domains: ['loadcompanion.com'],
-    unoptimized: process.env.NODE_ENV === 'development',
+    unoptimized: true, // Required for AWS Amplify
   },
   experimental: {
     webpackBuildWorker: true,
