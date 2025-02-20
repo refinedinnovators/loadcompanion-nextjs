@@ -29,8 +29,6 @@ const HowItWorksContent = {
       description:
         'Once installed, use your Gmail or Outlook account to securely log in and activate the LoadCompanion extension.',
       icon: Mail,
-      action: 'Learn More',
-      link: '#',
     },
     {
       title: 'Start Using LoadCompanion',
@@ -38,7 +36,9 @@ const HowItWorksContent = {
         'With LoadCompanion active, you can immediately start using its features to streamline your load booking process and boost efficiency.',
       icon: Rocket,
       action: 'Explore Features',
-      link: '#features',
+      onClick: () => {
+        document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })
+      },
     },
   ],
 }
@@ -97,15 +97,26 @@ export function HowItWorks() {
                     {step.title}
                   </h4>
                   <p className="text-gray-600 mb-4">{step.description}</p>
-                  <Button asChild variant="outline" size="sm">
-                    <a
-                      href={step.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                  {step.action && (step.link || step.onClick) && (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      asChild={!!step.link}
+                      onClick={step.onClick}
                     >
-                      {step.action}
-                    </a>
-                  </Button>
+                      {step.link ? (
+                        <a
+                          href={step.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {step.action}
+                        </a>
+                      ) : (
+                        step.action
+                      )}
+                    </Button>
+                  )}
                 </div>
               </motion.div>
             ))}

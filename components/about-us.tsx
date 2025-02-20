@@ -13,7 +13,7 @@ export type CallToActionBlockType = {
 const aboutUsContent: CallToActionBlockType = {
   title: 'Why Choose Us',
   description:
-    "In the world of freight logistics, where speed and precision are critical, the Load Companion Chrome Extension stands out as a game-changing tool for dispatchers. Tailored for use with DAT Power, DAT One, and Sylectus, it's designed to simplify load booking and enhance dispatching efficiency. By optimizing workflows and reducing manual effort, Load Companion helps you stay ahead in a competitive industry. Here's why it deserves a place in your dispatching arsenal.",
+    "In the world of freight logistics, where speed and precision are critical, the Load Companion Chrome Extension stands out as a game-changing tool for dispatchers. Tailored for use with DAT One, and Sylectus, it's designed to simplify load booking and enhance dispatching efficiency. By optimizing workflows and reducing manual effort, Load Companion helps you stay ahead in a competitive industry. Here's why it deserves a place in your dispatching arsenal.",
   buttons: [
     {
       title: 'Start Trial',

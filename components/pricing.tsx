@@ -24,9 +24,8 @@ const plans: PricingPlan[] = [
     description:
       'Experience the full potential of Load Companion with a risk-free, 2-week trial. Perfect for businesses eager to streamline load management and explore our powerful features without any commitment.',
     featured: false,
-    buttonTitle: 'Start Free Trial',
-    buttonHref:
-      'https://chromewebstore.google.com/detail/loadcompanion/leflgffnbnehlmfnheafonkfmdidpanj',
+    buttonTitle: 'Get Started Now',
+    buttonHref: 'https://webapp.loadcompanion.com/#/billing',
     calculateDispatchers: false,
     features: [
       'Unlimited Email Sends',
@@ -34,9 +33,9 @@ const plans: PricingPlan[] = [
       'Email Templates',
       'Google Maps links',
       'Pop-Up Email Editor',
-      'Works on Power Dat, Dat One, Sylectus',
+      'Works on Dat One, Sylectus',
       'Send Emails Directly from Comments',
-      'Multiple Email Addresses(Coming Soon)',
+      'Multiple Email Addresses',
     ],
   },
   {
@@ -56,9 +55,9 @@ const plans: PricingPlan[] = [
       'Email Templates',
       'Google Maps links',
       'Pop-Up Email Editor',
-      'Works on Power Dat, Dat One, Sylectus',
+      'Works on Dat One, Sylectus',
       'Send Emails Directly from Comments',
-      'Multiple Email Addresses(Coming Soon)',
+      'Multiple Email Addresses',
     ],
   },
   {
@@ -77,9 +76,9 @@ const plans: PricingPlan[] = [
       'Email Templates',
       'Google Maps links',
       'Pop-Up Email Editor',
-      'Works on Power Dat, Dat One, Sylectus',
+      'Works on Dat One, Sylectus',
       'Send Emails Directly from Comments',
-      'Multiple Email Addresses(Coming Soon)',
+      'Multiple Email Addresses',
     ],
   },
 ]
