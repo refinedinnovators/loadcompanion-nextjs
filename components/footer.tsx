@@ -1,5 +1,5 @@
 import Link from "next/link"
-import Image from "next/image"
+import Image from 'next/image'
 import { Facebook, Instagram, Mail, Send } from "lucide-react"
 import React from "react"
 
@@ -114,6 +114,8 @@ export function Footer() {
                 width={48}
                 height={48}
                 className="h-12 w-12"
+                priority={true}
+                quality={90}
               />
               <span className="font-bold text-xl text-white">Load Companion</span>
             </Link>

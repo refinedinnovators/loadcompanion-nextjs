@@ -1,19 +1,19 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
-import Image, { type StaticImageData } from "next/image"
 import { InfoIcon as InfoCircle, X, ChevronLeft, ChevronRight } from "lucide-react"
+import Image from 'next/image'
 
 type Pointer = {
   x: number
   y: number
   title: string
   description: string
-  gif?: StaticImageData
+  gif?: string
 }
 
 type ImageProps = {
-  src: StaticImageData
+  src: string
   alt: string
   pointers?: Pointer[]
 }
@@ -36,7 +36,7 @@ export function Carousel({ images, onSlideChange }: CarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [activePointerIndex, setActivePointerIndex] = useState<number | null>(null)
   const [isHovered, setIsHovered] = useState(false)
-  const [modalGif, setModalGif] = useState<StaticImageData | null>(null)
+  const [modalGif, setModalGif] = useState<string | null>(null)
   const [gifDimensions, setGifDimensions] = useState<{ width: number; height: number } | null>(null)
 
   const closeModal = useCallback(() => {
@@ -44,12 +44,12 @@ export function Carousel({ images, onSlideChange }: CarouselProps) {
     setGifDimensions(null)
   }, [])
 
-  const openModal = useCallback((gif: StaticImageData) => {
+  const openModal = useCallback((gif: string) => {
     setModalGif(gif)
     if (typeof window !== 'undefined') {
       const img = new window.Image()
       img.crossOrigin = "anonymous"
-      img.src = gif.src
+      img.src = gif
       img.onload = () => {
         const maxWidth = window.innerWidth * 0.8
         const maxHeight = window.innerHeight * 0.8
@@ -186,10 +186,11 @@ export function Carousel({ images, onSlideChange }: CarouselProps) {
                             >
                               <Image
                                 src={pointer.gif || "/placeholder.svg"}
-                                alt={`${pointer.title} GIF`}
+                                alt="Feature preview"
                                 width={150}
                                 height={150}
                                 className="w-full h-auto rounded-md"
+                                priority={true}
                               />
                             </div>
                           )}
@@ -250,14 +251,14 @@ export function Carousel({ images, onSlideChange }: CarouselProps) {
           onClick={closeModal}
         >
           <div className="relative bg-black rounded-lg overflow-hidden">
-            <img
-              src={modalGif.src || "/placeholder.svg"}
-              alt="Full GIF"
-              style={{
-                width: gifDimensions?.width || "auto",
-                height: gifDimensions?.height || "auto",
-              }}
+            <Image
+              src={modalGif}
+              alt="Feature preview"
+              width={gifDimensions?.width || 800}
+              height={gifDimensions?.height || 600}
               className="rounded-lg"
+              priority={true}
+              unoptimized={true}
             />
             <button
               className="absolute top-2 right-2 bg-black bg-opacity-50 text-white hover:bg-opacity-75 transition-colors duration-200 rounded-full p-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"

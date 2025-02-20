@@ -1,25 +1,29 @@
 import type { StaticImageData } from "next/image"
-import DatOneScreen from "@/public/images/screenshots/dat-one.png"
-import SylectusScreen from "@/public/images/screenshots/sylectus-board.png"
-import OneClickEmailGif from "@/public/images/gifs/one-click-email.gif"
-import OneGoogleMapsGif from "@/public/images/gifs/one-google-maps.gif"
-import CalcGif from "@/public/images/gifs/calculator.gif"
-import lcMapGif from "@/public/images/gifs/lc-maps.gif"
-import EmailEditorGif from "@/public/images/gifs/email-editor.gif"
-import ClipboardGif from "@/public/images/gifs/clipboard.gif"
-import SylectusGoogleMapsGif from "@/public/images/gifs/sylectus-google-maps.gif"
-import SylectusEmailEditorGif from "@/public/images/gifs/sylectus-email-editor.gif"
+
+// Static images
+const DatOneScreen = '/images/screenshots/dat-one.png';
+const SylectusScreen = '/images/screenshots/sylectus-board.png';
+
+// GIFs
+const OneClickEmailGif = '/images/gifs/one-click-email.gif';
+const OneGoogleMapsGif = '/images/gifs/one-google-maps.gif';
+const CalcGif = '/images/gifs/calculator.gif';
+const lcMapGif = '/images/gifs/lc-maps.gif';
+const EmailEditorGif = '/images/gifs/email-editor.gif';
+const ClipboardGif = '/images/gifs/clipboard.gif';
+const SylectusGoogleMapsGif = '/images/gifs/sylectus-google-maps.gif';
+const SylectusEmailEditorGif = '/images/gifs/sylectus-email-editor.gif';
 
 export type PointerType = {
   x: number
   y: number
   title: string
   description: string
-  gif?: StaticImageData
+  gif?: string
 }
 
 export type GalleryImageType = {
-  src: StaticImageData
+  src: string
   alt: string
   pointers?: PointerType[]
 }

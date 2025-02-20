@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import Image from "next/image"
+import Image from 'next/image'
 
 export type LogoCloudType = {
   title?: string
@@ -76,6 +76,8 @@ export function LogoClouds({ title, images, className = "" }: LogoCloudType) {
                 width={64}
                 height={32}
                 className="w-auto h-[32px] object-contain transition-all duration-300 hover:scale-110 opacity-80"
+                priority={true}
+                quality={90}
                 style={{ maxWidth: '100%' }}
               />
             </div>
