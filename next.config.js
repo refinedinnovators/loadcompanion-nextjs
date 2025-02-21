@@ -9,8 +9,14 @@ const nextConfig = {
       },
     ],
   },
-  trailingSlash: true,
+  // Remove trailingSlash
   poweredByHeader: false,
+  // Add standalone output
+  output: 'standalone',
+  // Add experimental features for better SSR performance
+  experimental: {
+    serverActions: true,
+  }
 };
 
 module.exports = nextConfig;
