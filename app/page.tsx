@@ -31,14 +31,14 @@ export default function Home() {
       itemType="https://schema.org/WebPage"
     >
       <Navbar />
-      <main id="main-content" role="main">
+      <main id="main-content" role="main" className="w-full overflow-x-hidden">
         <Hero />
-        <Gallery />
-        <AnimatedFeatures />
-        <HowItWorks />
-        <Pricing />
-        <FAQ />
-        <AboutUs />
+          <Gallery />
+          <AnimatedFeatures />
+          <HowItWorks />
+          <Pricing />
+          <FAQ />
+          <AboutUs />
       </main>
       <Footer />
     </div>
