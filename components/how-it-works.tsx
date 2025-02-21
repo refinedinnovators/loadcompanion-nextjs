@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Chrome, Mail, Rocket } from 'lucide-react'
 
+import { YouTubePlayer } from '@/components/youtube-player'
+
 import { Button } from '@/components/ui/button'
 
 const HowItWorksContent = {
@@ -12,7 +14,7 @@ const HowItWorksContent = {
   description:
     'Load Companion simplifies your workflow with an easy setup process. Watch our demo video or follow the steps below:',
   video: {
-    src: 'https://www.youtube.com/embed/uWPYq7k2wAE',
+    id: 'uWPYq7k2wAE',
     title: 'How LoadCompanion Works',
   },
   steps: [
@@ -62,16 +64,10 @@ export function HowItWorks() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="aspect-video rounded-lg overflow-hidden shadow-xl">
-            <iframe
-              className="w-full h-full"
-              src={HowItWorksContent.video.src}
-              title={HowItWorksContent.video.title}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
+          <YouTubePlayer
+            videoId={HowItWorksContent.video.id}
+            title={HowItWorksContent.video.title}
+          />
 
           <div className="space-y-8">
             {HowItWorksContent.steps.map((step, index) => (

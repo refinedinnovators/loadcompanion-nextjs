@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 
+import { YouTubePlayer } from '@/components/youtube-player'
 import { Button } from '@/components/ui/button'
 
 const GetStartedContent = {
@@ -31,7 +32,7 @@ const GetStartedContent = {
     },
   ],
   video: {
-    src: 'https://www.youtube.com/embed/uWPYq7k2wAE',
+    id: 'uWPYq7k2wAE',
     title: 'How to Install LoadCompanion',
   },
 }
@@ -89,12 +90,9 @@ export function GetStarted() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <iframe
-              className="absolute inset-0 w-full h-full"
-              src={GetStartedContent.video.src}
+            <YouTubePlayer
+              videoId={GetStartedContent.video.id}
               title={GetStartedContent.video.title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
             />
           </motion.div>
         </div>
