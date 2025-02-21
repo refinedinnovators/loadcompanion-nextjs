@@ -115,7 +115,7 @@ export function Footer() {
                 height={48}
                 className="h-12 w-12"
                 priority={true}
-                quality={90}
+                quality={75}
               />
               <span className="font-bold text-xl text-white">
                 Load Companion

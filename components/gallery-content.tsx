@@ -1,8 +1,16 @@
 import type { StaticImageData } from 'next/image'
 
-// Static images
-const DatOneScreen = '/images/screenshots/dat-one.png'
-const SylectusScreen = '/images/screenshots/sylectus-board.png'
+// Static images with dimensions
+const DatOneScreen = {
+  src: '/images/screenshots/dat-one.png',
+  width: 1280,
+  height: 720
+}
+const SylectusScreen = {
+  src: '/images/screenshots/sylectus-board.png',
+  width: 1280,
+  height: 720
+}
 
 // GIFs
 const OneClickEmailGif = '/images/gifs/one-click-email.gif'
@@ -25,12 +33,14 @@ export type PointerType = {
 export type GalleryImageType = {
   src: string
   alt: string
+  width: number
+  height: number
   pointers?: PointerType[]
 }
 
 const GalleryContent: GalleryImageType[] = [
   {
-    src: DatOneScreen,
+    ...DatOneScreen,
     alt: 'Dat One',
     pointers: [
       {
@@ -105,7 +115,7 @@ const GalleryContent: GalleryImageType[] = [
     ],
   },
   {
-    src: SylectusScreen,
+    ...SylectusScreen,
     alt: 'Sylectus',
     pointers: [
       {

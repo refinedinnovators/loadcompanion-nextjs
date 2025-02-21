@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
-import Image from 'next/image'
+import { ResponsiveImage } from '@/components/ui/responsive-image'
 import {
   ChevronLeft,
   ChevronRight,
@@ -20,6 +20,8 @@ type Pointer = {
 type ImageProps = {
   src: string
   alt: string
+  width: number
+  height: number
   pointers?: Pointer[]
 }
 
@@ -144,13 +146,15 @@ export function Carousel({ images, onSlideChange }: CarouselProps) {
           >
             <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
               <div className="absolute inset-0">
-                <Image
+                <ResponsiveImage
                   src={image.src}
                   alt={image.alt}
-                  fill
-                  className="object-cover"
+                  width={image.width}
+                  height={image.height}
+                  className="w-full h-full object-cover"
                   priority={index === currentIndex}
-                  quality={100}
+                  quality={75}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
                 />
               </div>
 
@@ -200,13 +204,15 @@ export function Carousel({ images, onSlideChange }: CarouselProps) {
                                 pointer.gif && openModal(pointer.gif)
                               }
                             >
-                              <Image
+                              <ResponsiveImage
                                 src={pointer.gif || '/placeholder.svg'}
                                 alt="Feature preview"
-                                width={150}
-                                height={150}
+                                width={300}
+                                height={169}
                                 className="w-full h-auto rounded-md"
-                                priority={true}
+                                loading="eager"
+                                quality={75}
+                                sizes="150px"
                               />
                             </div>
                           )}
@@ -271,14 +277,15 @@ export function Carousel({ images, onSlideChange }: CarouselProps) {
           onClick={closeModal}
         >
           <div className="relative bg-black rounded-lg overflow-hidden">
-            <Image
+            <ResponsiveImage
               src={modalGif}
               alt="Feature preview"
               width={gifDimensions?.width || 800}
               height={gifDimensions?.height || 600}
               className="rounded-lg"
-              priority={true}
-              unoptimized={true}
+              loading="eager"
+              quality={75}
+              sizes="(max-width: 768px) 100vw, 800px"
             />
             <button
               className="absolute top-2 right-2 bg-black bg-opacity-50 text-white hover:bg-opacity-75 transition-colors duration-200 rounded-full p-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
