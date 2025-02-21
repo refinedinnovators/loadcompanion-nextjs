@@ -201,10 +201,8 @@ export function AnimatedFeatures() {
                   </p>
                 </div>
                 <div className="flex-grow space-y-4">
-                  <div className="flex items-center justify-between mb-2 md:block">
-                    <div className="w-8 h-8 bg-primary/10 rounded-full hidden md:block"></div>
-                    <div className="w-16 h-6 bg-primary/10 rounded hidden md:block"></div>
-                    <p className="text-sm text-muted-foreground md:hidden text-center mb-4">Tap a feature to learn more</p>
+                  <div className="mb-4">
+                    <p className="text-sm text-muted-foreground md:hidden text-center">Tap a feature to learn more</p>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {features.map((feature, index) => (
