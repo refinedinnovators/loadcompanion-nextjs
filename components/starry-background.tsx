@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import Image from 'next/image'
 
 const starryStyles = `
 @keyframes twinkle {
@@ -60,14 +61,18 @@ export function StarryBackground() {
       <style>{starryStyles}</style>
       <div
         ref={containerRef}
-        className="absolute inset-0 overflow-hidden bg-[#0A0A0B]"
-        style={{
-          backgroundImage: `url(/images/backgrounds/stars.png)`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'repeat',
-        }}
-      />
+        className="absolute inset-0 overflow-hidden"
+      >
+        <Image
+          src="/images/backgrounds/stars.png"
+          alt="Starry background"
+          fill
+          priority
+          sizes="100vw"
+          quality={90}
+          className="object-cover opacity-50"
+        />
+      </div>
     </>
   )
 }
