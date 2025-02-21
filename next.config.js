@@ -1,10 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
+  output: 'export',  // Change to static export
   images: {
     unoptimized: true,
   },
-  // Remove experimental features
   poweredByHeader: false,
 };
 
