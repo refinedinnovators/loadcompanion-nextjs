@@ -10,17 +10,17 @@ const nextConfig = {
   },
   headers: async () => [
     {
-      source: "/manifest.json",
+      source: '/manifest.json',
       headers: [
-        { key: "Content-Type", value: "application/json" },
-        { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        { key: 'Content-Type', value: 'application/json' },
+        { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
       ],
     },
     {
-      source: "/_next/static/*",
-      headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+      source: '/_next/static/:path*',
+      headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
     },
   ],
 };
 
-export default nextConfig;
+module.exports = nextConfig;
