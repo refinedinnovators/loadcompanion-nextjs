@@ -68,7 +68,7 @@ export function LogoClouds({ title, images, className = '' }: LogoCloudType) {
           ref={scrollerRef}
           className={`flex items-center space-x-20 ${
             start
-              ? 'animate-scroll'
+              ? 'md:animate-scroll animate-scroll-mobile'
               : '[&_img]:opacity-0 [&_img]:animate-fade-in'
           }`}
         >
