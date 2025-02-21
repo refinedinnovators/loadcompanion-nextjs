@@ -101,9 +101,19 @@ export function AnimatedFeatures() {
   const [activeFeature, setActiveFeature] = useState(0)
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveFeature((prev) => (prev + 1) % features.length)
-    }, 5000)
+    let interval: NodeJS.Timeout
+    
+    // Only auto-rotate on desktop
+    const startAutoRotate = () => {
+      interval = setInterval(() => {
+        setActiveFeature((prev) => (prev + 1) % features.length)
+      }, 5000)
+    }
+
+    // Check if we're on desktop
+    if (window.matchMedia('(min-width: 768px)').matches) {
+      startAutoRotate()
+    }
 
     return () => clearInterval(interval)
   }, [])
@@ -191,15 +201,17 @@ export function AnimatedFeatures() {
                   </p>
                 </div>
                 <div className="flex-grow space-y-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="w-8 h-8 bg-primary/10 rounded-full"></div>
-                    <div className="w-16 h-6 bg-primary/10 rounded"></div>
+                  <div className="flex items-center justify-between mb-2 md:block">
+                    <div className="w-8 h-8 bg-primary/10 rounded-full hidden md:block"></div>
+                    <div className="w-16 h-6 bg-primary/10 rounded hidden md:block"></div>
+                    <p className="text-sm text-muted-foreground md:hidden text-center mb-4">Tap a feature to learn more</p>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {features.map((feature, index) => (
                       <Tooltip key={index}>
                         <TooltipTrigger asChild>
                           <div
+                            onClick={() => setActiveFeature(index)}
                             className={`flex items-center space-x-3 p-2 rounded transition-colors duration-300 cursor-pointer ${
                               index === activeFeature
                                 ? 'bg-primary/20'
