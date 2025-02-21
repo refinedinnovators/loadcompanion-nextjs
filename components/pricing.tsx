@@ -66,6 +66,7 @@ const plans: PricingPlan[] = [
       'Get full access to premium features with the flexibility of monthly billing. The Monthly Plan is perfect for those who prefer a no-commitment option while enjoying the same powerful tools to enhance your workflow.',
     basePrice: 9.99,
     interval: '/mo',
+    annualBasePrice: 119.88,
     featured: false,
     buttonTitle: 'Get Started Now',
     buttonHref: 'https://webapp.loadcompanion.com/#/billing',
@@ -123,13 +124,14 @@ function PricingCard({ plan }: { plan: PricingPlan }) {
             </span>
           </div>
           {plan.annualBasePrice && (
-            <p className="mt-1 text-center text-sm text-gray-500">
-              $
-              {plan.calculateDispatchers
-                ? (plan.annualBasePrice * dispatcherCount).toFixed(2)
-                : plan.annualBasePrice}
-              /year
-            </p>
+            <div className="mt-1 text-center text-sm">
+              <span className="text-gray-500">Annual cost: </span>
+              <span className="font-medium text-gray-700">
+                ${plan.calculateDispatchers
+                  ? (plan.annualBasePrice * dispatcherCount).toFixed(2)
+                  : plan.annualBasePrice}
+              </span>
+            </div>
           )}
           {plan.calculateDispatchers && (
             <div className="mt-4 flex items-center justify-between bg-gray-100 p-3 rounded-lg">
