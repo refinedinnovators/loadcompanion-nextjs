@@ -28,7 +28,7 @@ interface FooterType {
 
 const footerData: FooterType = {
   description:
-    'Load Companion is designed to streamline the load booking process, enhance productivity, and simplify workload management for users on platforms like DAT Power, DAT One, and Sylectus.',
+    'Load Companion is designed to streamline the load booking process, enhance productivity, and simplify workload management for users on platforms like DAT One, and Sylectus.',
   copyright: 'Refined Innovators LLC, All Rights Reserved',
   email: 'help@refinedinnovators.com',
   telegram: {

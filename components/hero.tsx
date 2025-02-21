@@ -38,7 +38,7 @@ const logoCloudContent = {
     {
       src: '/images/logos/dat-one.png',
       alt: 'DAT One',
-      height: 55,
+      height: 70,
     },
     {
       src: '/images/logos/sylectus.svg',

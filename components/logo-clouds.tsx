@@ -75,14 +75,14 @@ export function LogoClouds({ title, images, className = '' }: LogoCloudType) {
           {images?.map((image, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-24 h-12 flex items-center justify-center"
+              className={`flex-shrink-0 ${image.alt === 'DAT One' ? 'w-40 h-20' : 'w-32 h-16'} flex items-center justify-center`}
             >
               <Image
                 src={image.src || '/placeholder.svg'}
                 alt={image.alt}
-                width={64}
-                height={32}
-                className="w-auto h-[32px] object-contain transition-all duration-300 hover:scale-110 opacity-80"
+                width={96}
+                height={48}
+                className={`w-auto ${image.alt === 'DAT One' ? 'h-[60px]' : 'h-[48px]'} object-contain transition-all duration-300 hover:scale-110 opacity-80`}
                 priority={true}
                 quality={90}
                 style={{ maxWidth: '100%' }}

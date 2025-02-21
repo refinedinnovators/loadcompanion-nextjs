@@ -71,7 +71,7 @@ module.exports = {
         },
       },
       animation: {
-        scroll: 'scroll 40s linear infinite',
+        scroll: 'scroll 25s linear infinite',
         'fade-in': 'fade-in 0.5s ease-out forwards',
       },
     },
