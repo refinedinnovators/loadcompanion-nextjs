@@ -12,6 +12,9 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  other: {
+    'fb:app_id': 'your-facebook-app-id',
+  },
   metadataBase: new URL('https://loadcompanion.com'),
   title: {
     default: 'Load Companion - The One-Click Booking Solution for Trucking',
@@ -56,7 +59,7 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   openGraph: {
-    type: 'website',
+    type: 'article',
     locale: 'en_US',
     url: 'https://loadcompanion.com',
     siteName: 'Load Companion',
@@ -71,15 +74,10 @@ export const metadata: Metadata = {
         alt: 'Load Companion Dashboard',
       },
     ],
-    appId: 'your-facebook-app-id',  // Replace with your actual Facebook App ID
-    type: 'website',
-    determiner: 'the',
-    article: {
-      publishedTime: '2024-01-26T00:00:00.000Z',
-      modifiedTime: '2024-02-21T00:00:00.000Z',
-      section: 'Technology',
-      tags: ['trucking software', 'automation', 'logistics', 'transportation'],
-    },
+    publishedTime: '2024-01-26T00:00:00.000Z',
+    modifiedTime: '2024-02-21T00:00:00.000Z',
+    section: 'Technology',
+    tags: ['trucking software', 'automation', 'logistics', 'transportation'],
   },
   twitter: {
     card: 'summary_large_image',

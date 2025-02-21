@@ -1,78 +1,55 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import Image from 'next/image'
+const generateStarryBackground = () => {
+  const radialGradients = Array.from({ length: 100 }, (_, i) => {
+    const x = Math.random() * 100
+    const y = Math.random() * 100
+    const size = Math.random() * 2 + 1
+    const brightness = Math.random() * 0.4 + 0.6 // 0.6 to 1.0
+    return `radial-gradient(${size}px ${size}px at ${x}% ${y}%, rgba(255, 255, 255, ${brightness}) 0%, rgba(255, 255, 255, 0) 100%)`
+  }).join(', ')
+
+  return radialGradients
+}
 
 const starryStyles = `
-@keyframes twinkle {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
+@keyframes twinkle1 {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 0.4; }
 }
 
-.star {
+@keyframes twinkle2 {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+}
+
+.starry-layer {
   position: absolute;
-  background: white;
-  border-radius: 50%;
+  inset: 0;
+  background-image: ${generateStarryBackground()};
 }
 
-.twinkle {
-  animation: twinkle 2s ease-in-out infinite;
+.starry-layer-1 {
+  animation: twinkle1 4s ease-in-out infinite;
+}
+
+.starry-layer-2 {
+  animation: twinkle2 4s ease-in-out infinite;
 }
 `
 
 export function StarryBackground() {
-  const containerRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    if (!containerRef.current) return
-
-    const container = containerRef.current
-    const stars: HTMLDivElement[] = []
-    const numberOfStars = 200
-
-    // Create stars
-    for (let i = 0; i < numberOfStars; i++) {
-      const star = document.createElement('div')
-      star.className = 'star twinkle'
-
-      // Random size between 1-2px
-      const size = Math.random() * 1 + 1
-      star.style.width = `${size}px`
-      star.style.height = `${size}px`
-
-      // Random position
-      star.style.left = `${Math.random() * 100}%`
-      star.style.top = `${Math.random() * 100}%`
-
-      // Random twinkle delay
-      star.style.animationDelay = `${Math.random() * 2}s`
-
-      container.appendChild(star)
-      stars.push(star)
-    }
-
-    return () => {
-      stars.forEach((star) => star.remove())
-    }
-  }, [])
-
   return (
-    <>
+    <div className="absolute inset-0 overflow-hidden bg-[#0A0A0B]">
       <style>{starryStyles}</style>
-      <div
-        ref={containerRef}
-        className="absolute inset-0 overflow-hidden"
-      >
-        <Image
-          src="/images/backgrounds/stars.png"
-          alt="Starry background"
-          fill
-          priority
-          sizes="100vw"
-          quality={90}
-          className="object-cover opacity-50"
-        />
-      </div>
-    </>
+      <div className="starry-layer starry-layer-1" />
+      <div className="starry-layer starry-layer-2" style={{ backgroundImage: generateStarryBackground() }} />
+      <div 
+        className="absolute inset-0"
+        style={{
+          backgroundImage: 'radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 70%)',
+        }}
+      />
+    </div>
   )
 }
