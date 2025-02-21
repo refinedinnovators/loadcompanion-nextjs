@@ -17,6 +17,16 @@ module.exports = {
       },
     },
     extend: {
+      keyframes: {
+        scroll: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(calc(-50% - 2.5rem))' }
+        }
+      },
+      animation: {
+        scroll: 'scroll 40s linear infinite',
+        pause: 'scroll 40s linear infinite paused',
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

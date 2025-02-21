@@ -15,7 +15,7 @@ const FAQContent = {
     {
       question: 'What is Load Companion?',
       answer:
-        'Load Companion is an app that helps users streamline load booking process, enhance productivity, and simplify workload management on DAT Power, DAT One and Sylectus.',
+        'Load Companion is an app that helps users streamline load booking process, enhance productivity, and simplify workload management on DAT One and Sylectus.',
     },
     {
       question: 'Is my data secure with Load Companion?',
