@@ -1,26 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone', // Ensure SSR mode is supported
-  experimental: {
-    optimizeCss: true,
-    scrollRestoration: true,
-  },
+  output: 'standalone',
   images: {
-    unoptimized: true, // Required for AWS Amplify
+    unoptimized: true,
   },
-  headers: async () => [
-    {
-      source: '/manifest.json',
-      headers: [
-        { key: 'Content-Type', value: 'application/json' },
-        { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-      ],
-    },
-    {
-      source: '/_next/static/:path*',
-      headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
-    },
-  ],
+  // Remove experimental features
+  poweredByHeader: false,
 };
 
 module.exports = nextConfig;
