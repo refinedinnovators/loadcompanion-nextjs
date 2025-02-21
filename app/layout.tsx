@@ -71,6 +71,15 @@ export const metadata: Metadata = {
         alt: 'Load Companion Dashboard',
       },
     ],
+    appId: 'your-facebook-app-id',  // Replace with your actual Facebook App ID
+    type: 'website',
+    determiner: 'the',
+    article: {
+      publishedTime: '2024-01-26T00:00:00.000Z',
+      modifiedTime: '2024-02-21T00:00:00.000Z',
+      section: 'Technology',
+      tags: ['trucking software', 'automation', 'logistics', 'transportation'],
+    },
   },
   twitter: {
     card: 'summary_large_image',
@@ -85,6 +94,14 @@ export const metadata: Metadata = {
     other: {
       'facebook-domain-verification': 'xxxxxxxxxxxxxxxxxxxxxxx',
       'msvalidate.01': 'xxxxxxxxxxxxxxxx',
+      'fb:app_id': 'your-facebook-app-id',  // Replace with your actual Facebook App ID
+      'fb:pages': 'your-facebook-page-id',  // Replace with your Facebook Page ID
+      'instagram:card': 'summary_large_image',
+      'instagram:site': '@loadcompanion',
+      'instagram:creator': '@loadcompanion',
+      'instagram:title': 'Load Companion - Trucking Automation Made Simple',
+      'instagram:description': 'Automate your load booking process with Load Companion. Integrated with DAT and Sylectus.',
+      'instagram:image': 'https://loadcompanion.com/images/og-image.jpg',
     },
   },
   alternates: {
