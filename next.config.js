@@ -1,22 +1,26 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-    ],
-  },
-  // Remove trailingSlash
-  poweredByHeader: false,
-  // Add standalone output
-  output: 'standalone',
-  // Add experimental features for better SSR performance
+  output: 'standalone', // Ensure SSR mode is supported
   experimental: {
-    serverActions: true,
-  }
+    optimizeCss: true,
+    scrollRestoration: true,
+  },
+  images: {
+    unoptimized: true, // Required for AWS Amplify
+  },
+  headers: async () => [
+    {
+      source: "/manifest.json",
+      headers: [
+        { key: "Content-Type", value: "application/json" },
+        { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+      ],
+    },
+    {
+      source: "/_next/static/*",
+      headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+    },
+  ],
 };
 
-module.exports = nextConfig;
+export default nextConfig;
