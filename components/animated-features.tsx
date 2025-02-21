@@ -24,66 +24,77 @@ import {
 const features = [
   {
     title: 'One-Click Email Magic',
+    slug: 'Send-Emails-from-Comments',
     description:
       'Send booking requests with a single click, seamlessly integrated with Gmail and Outlook. Customize emails instantly without leaving your workflow.',
     icon: Mail,
   },
   {
     title: 'Multiple Email Templates',
+    slug: 'Multiple-Email-Templates',
     description:
       'Easily create and switch between multiple custom email templates designed for specific types of load bookings.',
     icon: FileText,
   },
   {
     title: 'Google Maps Integration',
+    slug: 'Google-Maps-Integration',
     description:
       'Plan routes and calculate miles directly from DAT.com with integrated Google Maps support. Save time and optimize dispatching workflow.',
     icon: Map,
   },
   {
     title: 'Weather Widget',
+    slug: 'Weather-Widget',
     description:
       'When you open a load, the extension provides destination-specific weather details alongside the load information, making it easier to make a decision.',
     icon: CloudSun,
   },
   {
     title: 'RPM Column',
+    slug: 'RPM-Column',
     description:
       'View real-time rates per mile directly in your dashboard, helping you make smarter decisions quickly.',
     icon: Calculator,
   },
   {
     title: 'Instant RPM Calculator',
+    slug: 'Instant-RPM-Calculator',
     description:
       'Calculate costs, profits, and rates per mile instantly, empowering you with real-time financial insights.',
     icon: Calculator,
   },
   {
     title: 'Send Emails from Comments',
+    slug: 'Send-Emails-from-Comments',
     description:
       'Coming soon: Send emails directly from comments when an email address is mentioned, streamlining your workflow further.',
     icon: Mail,
   },
   {
     title: 'Built-in Email Editor',
+    slug: 'Built-in-Email-Editor',
     description:
       'Effortlessly customize emails with our built-in editor. Make quick adjustments directly from your dashboard for precise, on-point trucking communications.',
     icon: Edit,
   },
   {
     title: 'Load Companion Map',
+    slug: 'Load-Companion-Map',
     description:
       'When you open a load, the extension automatically integrates a map with comprehensive load details, helping you evaluate its suitability at a glance.',
     icon: Globe,
   },
   {
     title: 'Multiple Email Addresses',
+    slug: 'Multiple-Email-Addresses',
     description:
       'Send emails using multiple email addresses directly within Load Companion. This upcoming feature offers enhanced flexibility and convenience, empowering you to manage communications effortlessly across various accounts.',
     icon: AtSign,
   },
   {
     title: 'Click to Call',
+    slug: 'Click-to-Call',
     description:
       'Click to Call is a feature that allows users to initiate a phone call directly from the load board with a single click.',
     icon: Phone,
@@ -180,10 +191,17 @@ export function AnimatedFeatures() {
           </svg>
 
           <div className="relative bg-background/80 backdrop-blur-sm border border-accent rounded-lg shadow-lg overflow-hidden">
-            <div className="flex items-center justify-start p-2 border-b border-accent">
-              <div className="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
-              <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
-              <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            <div className="flex flex-col border-b border-accent">
+              <div className="flex items-center justify-start p-2">
+                <div className="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              </div>
+              <div className="flex items-center px-4 py-2 bg-muted/30">
+                <div className="flex-1 bg-background rounded-md px-3 py-1.5 text-sm text-muted-foreground font-mono transition-all duration-300">
+                  https://loadcompanion.com/features/{features[activeFeature].slug}
+                </div>
+              </div>
             </div>
             <div className="p-6">
               <div className="flex flex-col md:flex-row gap-6">
