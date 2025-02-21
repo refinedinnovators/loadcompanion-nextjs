@@ -1,5 +1,8 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+import styles from './starry-background.module.css'
+
 const generateStarryBackground = () => {
   const radialGradients = Array.from({ length: 100 }, (_, i) => {
     const x = Math.random() * 100
@@ -12,38 +15,27 @@ const generateStarryBackground = () => {
   return radialGradients
 }
 
-const starryStyles = `
-@keyframes twinkle1 {
-  0%, 100% { opacity: 0.9; }
-  50% { opacity: 0.4; }
-}
-
-@keyframes twinkle2 {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.9; }
-}
-
-.starry-layer {
-  position: absolute;
-  inset: 0;
-  background-image: ${generateStarryBackground()};
-}
-
-.starry-layer-1 {
-  animation: twinkle1 4s ease-in-out infinite;
-}
-
-.starry-layer-2 {
-  animation: twinkle2 4s ease-in-out infinite;
-}
-`
-
 export function StarryBackground() {
+  const [patterns, setPatterns] = useState<{layer1: string, layer2: string} | null>(null)
+
+  useEffect(() => {
+    // Generate patterns only on client-side
+    setPatterns({
+      layer1: generateStarryBackground(),
+      layer2: generateStarryBackground()
+    })
+  }, [])
+
   return (
     <div className="absolute inset-0 overflow-hidden bg-[#0A0A0B]">
-      <style>{starryStyles}</style>
-      <div className="starry-layer starry-layer-1" />
-      <div className="starry-layer starry-layer-2" style={{ backgroundImage: generateStarryBackground() }} />
+      <div 
+        className={styles.starryLayer1}
+        style={{ backgroundImage: patterns?.layer1 || 'none' }}
+      />
+      <div 
+        className={styles.starryLayer2}
+        style={{ backgroundImage: patterns?.layer2 || 'none' }}
+      />
       <div 
         className="absolute inset-0"
         style={{

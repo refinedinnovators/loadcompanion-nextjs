@@ -38,21 +38,25 @@ const logoCloudContent = {
     {
       src: '/images/logos/dat-one.png',
       alt: 'DAT One',
+      width: 140,
       height: 70,
     },
     {
       src: '/images/logos/sylectus.svg',
       alt: 'Sylectus',
+      width: 110,
       height: 55,
     },
     {
       src: '/images/logos/gmail.svg',
       alt: 'Gmail',
+      width: 72,
       height: 36,
     },
     {
       src: '/images/logos/outlook.svg',
       alt: 'Outlook',
+      width: 72,
       height: 36,
     },
   ],

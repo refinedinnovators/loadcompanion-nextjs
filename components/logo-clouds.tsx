@@ -8,6 +8,7 @@ export type LogoCloudType = {
   images: Array<{
     src: string
     alt: string
+    width?: number
     height?: number
   }>
   className?: string
@@ -93,17 +94,28 @@ export function LogoClouds({ title, images, className = '' }: LogoCloudType) {
           {images?.map((image, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-32 h-16 flex items-center justify-center"
+              className="flex-shrink-0 flex items-center justify-center"
+              style={{
+                width: 'auto',
+                minWidth: '8rem',
+                height: 'auto',
+                minHeight: '4rem'
+              }}
             >
               <Image
                 src={image.src || '/placeholder.svg'}
                 alt={image.alt}
-                width={96}
-                height={48}
-                className="w-auto h-[48px] object-contain transition-all duration-300 hover:scale-110 opacity-80 hover:opacity-100"
+                width={image.width || 96}
+                height={image.height || 48}
+                className="object-contain transition-all duration-300 hover:scale-110 opacity-80 hover:opacity-100"
                 loading="lazy"
                 quality={90}
-                style={{ maxWidth: '100%', transform: 'translateZ(0)' }}
+                style={{
+                  width: image.width || 96,
+                  height: image.height || 48,
+                  maxWidth: '100%',
+                  transform: 'translateZ(0)'
+                }}
               />
             </div>
           ))}

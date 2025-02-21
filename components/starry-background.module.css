@@ -1,0 +1,24 @@
+@keyframes twinkle1 {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes twinkle2 {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+}
+
+.starryLayer {
+  position: absolute;
+  inset: 0;
+}
+
+.starryLayer1 {
+  composes: starryLayer;
+  animation: twinkle1 4s ease-in-out infinite;
+}
+
+.starryLayer2 {
+  composes: starryLayer;
+  animation: twinkle2 4s ease-in-out infinite;
+}

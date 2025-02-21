@@ -38,7 +38,7 @@ export function OptimizedImage({
             : 'scale-100 blur-0 grayscale-0'
         )}
         priority={priority}
-        onLoadingComplete={() => setIsLoading(false)}
+        onLoad={() => setIsLoading(false)}
         quality={90}
         unoptimized
       />

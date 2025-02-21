@@ -3,7 +3,7 @@
 import Script from 'next/script'
 import { GA_TRACKING_ID } from '@/lib/gtag'
 
-export function Analytics() {
+function Analytics() {
   return (
     <>
       <Script
@@ -12,7 +12,7 @@ export function Analytics() {
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
       />
       <Script
-        id="gtag-init"
+        id="google-analytics-config"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
@@ -21,12 +21,16 @@ export function Analytics() {
             window.gtag = gtag;
             gtag('js', new Date());
             gtag('config', '${GA_TRACKING_ID}', {
-              transport_type: 'beacon',
-              send_page_view: false
+              page_path: window.location.pathname,
+              transport_type: 'beacon'
             });
           `,
         }}
       />
     </>
   )
+}
+
+export default function ClientAnalytics() {
+  return <Analytics />
 }

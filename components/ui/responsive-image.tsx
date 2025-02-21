@@ -42,7 +42,7 @@ export function ResponsiveImage({
       isLoading ? 'scale-105 blur-lg' : 'scale-100 blur-0',
       className
     ),
-    onLoadingComplete: () => setIsLoading(false),
+    onLoad: () => setIsLoading(false),
     loading: loading || (priority ? 'eager' : 'lazy'),
   }
 
@@ -53,6 +53,7 @@ export function ResponsiveImage({
           {...imageProps}
           fill
           style={{ objectFit: 'cover' }}
+          alt={alt}
         />
       </div>
     )
@@ -63,6 +64,7 @@ export function ResponsiveImage({
       {...imageProps}
       width={width || 1920}
       height={height || 1080}
+      alt={alt}
     />
   )
 }
