@@ -220,7 +220,7 @@ export function Hero() {
           <div className="mt-12 -mx-4 sm:-mx-6 lg:-mx-8">
             <LogoClouds
               {...logoCloudContent}
-              className="bg-gray-900/30 backdrop-blur-sm py-6"
+              className="py-6"
             />
           </div>
         </div>

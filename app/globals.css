@@ -54,10 +54,39 @@
     transform: translateX(0);
   }
   to {
-    transform: translateX(calc(-50% - 1rem));
+    transform: translateX(calc(-50%));
   }
 }
 
+.logo-cloud {
+  @apply py-8;
+}
+
+.logo-cloud-title {
+  @apply mb-6 text-center font-medium text-sm leading-relaxed tracking-wide text-gray-400;
+}
+
+.logo-cloud-container {
+  @apply relative max-w-full mx-auto overflow-hidden;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.logo-cloud-scroller {
+  @apply flex items-center gap-x-20 transition-opacity duration-1000;
+}
+
+.logo-cloud-item {
+  @apply flex-shrink-0 flex items-center justify-center;
+  min-width: 8rem;
+  min-height: 4rem;
+}
+
 .animate-scroll {
-  animation: scroll 20s linear infinite;
+  animation: scroll 40s linear infinite;
+  will-change: transform;
+}
+
+.animate-pause {
+  animation-play-state: paused;
 }

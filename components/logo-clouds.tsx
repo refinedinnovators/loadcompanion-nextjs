@@ -31,91 +31,64 @@ export function LogoClouds({ title, images, className = '' }: LogoCloudType) {
 
     observer.observe(scrollerRef.current)
 
-    const scrollerContent = Array.from(scrollerRef.current.children)
-
-    // Function to duplicate items
-    const duplicateItems = () => {
-      scrollerContent.forEach((item) => {
-        const duplicatedItem = item.cloneNode(true)
-        if (scrollerRef.current) {
-          scrollerRef.current.appendChild(duplicatedItem)
-        }
+    // Create a duplicate set of images for seamless scrolling
+    const duplicateContent = () => {
+      if (!scrollerRef.current) return
+      const content = Array.from(scrollerRef.current.children)
+      content.forEach(item => {
+        const clone = item.cloneNode(true)
+        scrollerRef.current?.appendChild(clone)
       })
     }
 
-    // Initial duplication
-    duplicateItems()
-    duplicateItems() // Duplicate twice to ensure enough content for seamless loop
+    duplicateContent()
 
-    // Check if scroller width is greater than viewport and duplicate again if needed
-    const checkWidth = () => {
-      if (!scrollerRef.current) return
-      const scrollerWidth = scrollerRef.current.scrollWidth
-      const viewportWidth = window.innerWidth
-      if (scrollerWidth <= viewportWidth * 2) {
-        duplicateItems()
-      }
-    }
-
-    checkWidth()
-    window.addEventListener('resize', checkWidth)
-
-    return () => {
-      observer.disconnect()
-      window.removeEventListener('resize', checkWidth)
-    }
+    return () => observer.disconnect()
   }, [])
 
   return (
-    <div className={`py-8 ${className}`}>
+    <div className={`logo-cloud ${className}`}>
       {title && (
-        <p className="mb-6 text-center font-medium text-sm leading-relaxed tracking-wide text-gray-400">
+        <p className="logo-cloud-title" role="heading" aria-level={2}>
           {title}
         </p>
       )}
 
       <div 
-        className="relative max-w-full mx-auto overflow-hidden"
+        className="logo-cloud-container"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
+        aria-label="Partner logos carousel"
       >
         <div
           ref={scrollerRef}
-          className={`flex items-center space-x-20 transition-opacity duration-1000 ${
+          className={`logo-cloud-scroller ${
             isVisible ? 'opacity-100' : 'opacity-0'
           } ${
             isPaused ? 'animate-pause' : 'animate-scroll'
           }`}
-          style={{
-            animationPlayState: isPaused ? 'paused' : 'running',
-            willChange: 'transform',
-          }}
+          aria-live="off"
         >
           {images?.map((image, index) => (
             <div
-              key={index}
-              className="flex-shrink-0 flex items-center justify-center"
-              style={{
-                width: 'auto',
-                minWidth: '8rem',
-                height: 'auto',
-                minHeight: '4rem'
-              }}
+              key={`${image.alt}-${index}`}
+              className="logo-cloud-item"
             >
               <Image
-                src={image.src || '/placeholder.svg'}
                 alt={image.alt}
-                width={image.width || 96}
-                height={image.height || 48}
-                className="object-contain transition-all duration-300 hover:scale-110 opacity-80 hover:opacity-100"
                 loading="lazy"
-                quality={90}
+                width={image.width || 140}
+                height={image.height || 70}
+                decoding="async"
+                className="object-contain transition-all duration-300 hover:scale-110 opacity-80 hover:opacity-100"
                 style={{
-                  width: image.width || 96,
-                  height: image.height || 48,
+                  color: 'transparent',
+                  width: image.width || 140,
+                  height: image.height || 70,
                   maxWidth: '100%',
                   transform: 'translateZ(0)'
                 }}
+                src={image.src}
               />
             </div>
           ))}
