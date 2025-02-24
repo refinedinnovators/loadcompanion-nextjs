@@ -31,17 +31,41 @@ export function LogoClouds({ title, images, className = '' }: LogoCloudType) {
 
     observer.observe(scrollerRef.current)
 
-    // Create a duplicate set of images for seamless scrolling
+    // Create multiple sets of images for seamless scrolling
     const duplicateContent = () => {
       if (!scrollerRef.current) return
       const content = Array.from(scrollerRef.current.children)
-      content.forEach(item => {
-        const clone = item.cloneNode(true)
-        scrollerRef.current?.appendChild(clone)
-      })
+      // Create 3 copies for smoother infinite loop
+      for (let i = 0; i < 3; i++) {
+        content.forEach(item => {
+          const clone = item.cloneNode(true)
+          scrollerRef.current?.appendChild(clone)
+        })
+      }
     }
 
     duplicateContent()
+
+    // Reset animation when it reaches the end
+    const resetAnimation = () => {
+      if (scrollerRef.current) {
+        const firstScroll = () => {
+          if (scrollerRef.current) {
+            scrollerRef.current.style.transition = 'none'
+            scrollerRef.current.style.transform = 'translateX(0)'
+            setTimeout(() => {
+              if (scrollerRef.current) {
+                scrollerRef.current.style.transition = ''
+                scrollerRef.current.style.animation = 'scroll 40s linear infinite'
+              }
+            }, 10)
+          }
+        }
+        scrollerRef.current.addEventListener('animationend', firstScroll, { once: true })
+      }
+    }
+
+    resetAnimation()
 
     return () => observer.disconnect()
   }, [])
@@ -80,7 +104,7 @@ export function LogoClouds({ title, images, className = '' }: LogoCloudType) {
                 width={image.width || 140}
                 height={image.height || 70}
                 decoding="async"
-                className="object-contain transition-all duration-300 hover:scale-110 opacity-80 hover:opacity-100"
+                className="object-contain opacity-80 hover:opacity-100"
                 style={{
                   color: 'transparent',
                   width: image.width || 140,

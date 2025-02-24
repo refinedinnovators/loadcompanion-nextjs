@@ -68,8 +68,8 @@
 
 .logo-cloud-container {
   @apply relative max-w-full mx-auto overflow-hidden;
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
 
 .logo-cloud-scroller {
@@ -77,14 +77,29 @@
 }
 
 .logo-cloud-item {
-  @apply flex-shrink-0 flex items-center justify-center;
+  @apply flex-shrink-0 flex items-center justify-center cursor-pointer;
   min-width: 8rem;
   min-height: 4rem;
+}
+
+.logo-cloud-item img {
+  @apply transition-all duration-300 ease-out;
+  transform: scale(1);
+}
+
+.logo-cloud-item:hover img {
+  transform: scale(1.15);
+  filter: brightness(1.1);
 }
 
 .animate-scroll {
   animation: scroll 40s linear infinite;
   will-change: transform;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  perspective: 1000;
 }
 
 .animate-pause {

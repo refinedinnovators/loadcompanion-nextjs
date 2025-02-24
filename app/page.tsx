@@ -26,19 +26,19 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div
-      className="flex min-h-screen flex-col"
+      className="relative flex min-h-screen flex-col w-full max-w-[100vw] overflow-x-hidden"
       itemScope
       itemType="https://schema.org/WebPage"
     >
       <Navbar />
-      <main id="main-content" role="main" className="w-full overflow-x-hidden">
+      <main id="main-content" role="main" className="w-full">
         <Hero />
-          <Gallery />
-          <AnimatedFeatures />
-          <HowItWorks />
-          <Pricing />
-          <FAQ />
-          <AboutUs />
+        <Gallery />
+        <AnimatedFeatures />
+        <HowItWorks />
+        <Pricing />
+        <FAQ />
+        <AboutUs />
       </main>
       <Footer />
     </div>
