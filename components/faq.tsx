@@ -86,7 +86,7 @@ export function FAQ() {
             >
               <Button
                 variant="ghost"
-                className="w-full justify-between text-left font-medium text-base sm:text-lg py-3 sm:py-4 text-gray-900 hover:bg-muted"
+                className="w-full justify-between text-left font-medium text-base sm:text-lg py-3 sm:py-4 text-gray-900 hover:bg-muted break-words whitespace-normal"
                 onClick={() => toggleQuestion(index)}
               >
                 {item.question}
@@ -103,9 +103,9 @@ export function FAQ() {
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
+                    className="overflow-hidden break-words"
                   >
-                    <p className="p-3 sm:p-4 text-sm sm:text-base text-muted-foreground">
+                    <p className="p-3 sm:p-4 text-sm sm:text-base text-muted-foreground break-words whitespace-normal">
                       {item.answer}
                     </p>
                   </motion.div>
