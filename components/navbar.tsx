@@ -7,11 +7,7 @@ import { Menu, X } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 
-const navbarStyles = `
-.text-shadow {
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-`
+const navbarStyles = ``
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -75,7 +71,7 @@ export function Navbar() {
                 </g>
               </svg>
             </div>
-            <span className="font-bold text-lg sm:text-xl text-white text-shadow">
+            <span className="font-bold text-lg sm:text-xl text-white">
               Load Companion
             </span>
           </Link>
