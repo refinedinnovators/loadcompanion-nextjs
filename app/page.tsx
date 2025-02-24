@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div
-      className="relative flex min-h-screen flex-col w-full max-w-[100vw] overflow-x-hidden"
+      className="relative flex min-h-screen flex-col w-full max-w-[100vw] overflow-x-hidden pt-16"
       itemScope
       itemType="https://schema.org/WebPage"
     >
