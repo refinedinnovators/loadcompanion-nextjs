@@ -38,13 +38,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [
-      { url: '/images/logos/lc-logo.png', sizes: '512x512', type: 'image/png' },
-      { url: '/favicon.ico', sizes: 'any' },
-    ],
-    apple: [
-      { url: '/images/logos/lc-logo.png', sizes: '512x512', type: 'image/png' },
-    ],
+    icon: '/images/favicon.ico',
+    apple: '/images/favicon.ico',
   },
   manifest: '/manifest.json',
   openGraph: {

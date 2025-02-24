@@ -27,8 +27,8 @@ export const metadata: Metadata = {
   title: 'Load Companion',
   description: 'Your trusted companion for load management',
   icons: {
-    icon: '/images/logos/lc-logo.png',
-    apple: '/images/logos/lc-logo.png',
+    icon: '/images/favicon.ico',
+    apple: '/images/favicon.ico',
   },
   manifest: '/manifest.json',
   appleWebApp: {
