@@ -44,7 +44,7 @@ export function AboutUs() {
               <Button
                 key={index}
                 asChild
-                variant={button.type === 'primary' ? 'default' : 'outline'}
+                className={`px-4 py-2 rounded-md ${button.type === 'primary' ? 'bg-[#4F46E5] text-white hover:bg-[#4338CA]' : 'bg-white border-2 border-[#4F46E5] text-[#4F46E5] hover:bg-[#4F46E5]/10'} transition-colors duration-300`}
               >
                 <a href={button.href}>{button.title}</a>
               </Button>

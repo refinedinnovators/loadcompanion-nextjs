@@ -98,11 +98,11 @@ function PricingCard({ plan }: { plan: PricingPlan }) {
   return (
     <div
       className={`relative flex flex-col rounded-2xl bg-white p-8 shadow-lg transition-transform hover:scale-105 ${
-        plan.featured ? 'border-2 border-primary' : 'border border-gray-200'
+        plan.featured ? 'border-2 border-[#4F46E5]' : 'border border-gray-200'
       }`}
     >
       {plan.featured && (
-        <div className="absolute -top-5 left-0 right-0 mx-auto w-32 rounded-full bg-primary px-3 py-2 text-center text-sm font-medium text-white">
+        <div className="absolute -top-5 left-0 right-0 mx-auto w-32 rounded-full bg-[#4F46E5] px-3 py-2 text-center text-sm font-medium text-white hover:bg-[#4338CA] transition-colors duration-300">
           Most Popular
         </div>
       )}
@@ -183,8 +183,8 @@ function PricingCard({ plan }: { plan: PricingPlan }) {
         asChild
         className={`w-full ${
           plan.featured
-            ? 'bg-primary hover:bg-primary/90 text-white'
-            : 'bg-white text-primary border-2 border-primary hover:bg-primary/10'
+            ? 'bg-[#4F46E5] hover:bg-[#4338CA] text-white transition-colors duration-300'
+            : 'bg-white text-[#4F46E5] border-2 border-[#4F46E5] hover:bg-[#4F46E5]/10 transition-colors duration-300'
         }`}
       >
         <a href={plan.buttonHref} target="_blank" rel="noopener noreferrer">
