@@ -28,7 +28,7 @@ const heroStyles = `
 }
 
 .animate-scroll {
-  animation: scroll 40s linear infinite;
+  animation: scroll 30s linear infinite;
 }
 `
 

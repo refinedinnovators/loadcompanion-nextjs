@@ -31,41 +31,26 @@ export function LogoClouds({ title, images, className = '' }: LogoCloudType) {
 
     observer.observe(scrollerRef.current)
 
-    // Create multiple sets of images for seamless scrolling
-    const duplicateContent = () => {
+    // Create three sets of images for seamless scrolling
+    const content = [...images, ...images, ...images, ...images]
+    content.forEach((image, index) => {
       if (!scrollerRef.current) return
-      const content = Array.from(scrollerRef.current.children)
-      // Create 3 copies for smoother infinite loop
-      for (let i = 0; i < 3; i++) {
-        content.forEach(item => {
-          const clone = item.cloneNode(true)
-          scrollerRef.current?.appendChild(clone)
-        })
-      }
-    }
-
-    duplicateContent()
-
-    // Reset animation when it reaches the end
-    const resetAnimation = () => {
-      if (scrollerRef.current) {
-        const firstScroll = () => {
-          if (scrollerRef.current) {
-            scrollerRef.current.style.transition = 'none'
-            scrollerRef.current.style.transform = 'translateX(0)'
-            setTimeout(() => {
-              if (scrollerRef.current) {
-                scrollerRef.current.style.transition = ''
-                scrollerRef.current.style.animation = 'scroll 40s linear infinite'
-              }
-            }, 10)
-          }
-        }
-        scrollerRef.current.addEventListener('animationend', firstScroll, { once: true })
-      }
-    }
-
-    resetAnimation()
+      const div = document.createElement('div')
+      div.className = 'logo-cloud-item'
+      const img = document.createElement('img')
+      img.src = image.src
+      img.alt = image.alt
+      img.width = image.width || 140
+      img.height = image.height || 70
+      img.className = 'object-contain opacity-80 hover:opacity-100'
+      img.style.color = 'transparent'
+      img.style.width = `${image.width || 140}px`
+      img.style.height = `${image.height || 70}px`
+      img.style.maxWidth = '100%'
+      img.style.transform = 'translateZ(0)'
+      div.appendChild(img)
+      scrollerRef.current.appendChild(div)
+    })
 
     return () => observer.disconnect()
   }, [])

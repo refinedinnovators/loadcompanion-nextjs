@@ -50,9 +50,6 @@
 }
 
 @keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
   to {
     transform: translateX(calc(-50%));
   }
@@ -68,8 +65,8 @@
 
 .logo-cloud-container {
   @apply relative max-w-full mx-auto overflow-hidden;
-  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
 }
 
 .logo-cloud-scroller {
@@ -93,7 +90,7 @@
 }
 
 .animate-scroll {
-  animation: scroll 40s linear infinite;
+  animation: scroll 30s linear infinite;
   will-change: transform;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
