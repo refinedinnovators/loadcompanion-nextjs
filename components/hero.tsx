@@ -171,9 +171,23 @@ export function Hero() {
                     variant="outline"
                     className="w-full sm:w-auto text-[#4F46E5] border-[#4F46E5] hover:bg-[#4F46E5] hover:text-white text-base sm:text-lg py-2 px-4 sm:px-6"
                   >
-                    <Link href="https://www.youtube.com/embed/uWPYq7k2wAE">
+                    <a
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const width = 800;
+                        const height = 450;
+                        const left = (window.screen.width - width) / 2;
+                        const top = (window.screen.height - height) / 2;
+                        window.open(
+                          'https://www.youtube.com/embed/uWPYq7k2wAE',
+                          'LoadCompanionDemo',
+                          `width=${width},height=${height},top=${top},left=${left},popup=yes`
+                        );
+                      }}
+                    >
                       Watch Demo
-                    </Link>
+                    </a>
                   </Button>
                 </div>
               </motion.div>
