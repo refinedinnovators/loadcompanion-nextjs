@@ -123,6 +123,10 @@ export function Navbar() {
               href="https://chromewebstore.google.com/detail/loadcompanion/leflgffnbnehlmfnheafonkfmdidpanj"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => {
+                // Open Chrome Web Store in a new tab
+                window.open('https://chromewebstore.google.com/detail/loadcompanion/leflgffnbnehlmfnheafonkfmdidpanj', '_blank');
+              }}
             >
               Install Chrome Extension
             </a>
@@ -202,6 +206,10 @@ export function Navbar() {
                   href="https://chromewebstore.google.com/detail/loadcompanion/leflgffnbnehlmfnheafonkfmdidpanj"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(e) => {
+                    // Open Chrome Web Store in a new tab
+                    window.open('https://chromewebstore.google.com/detail/loadcompanion/leflgffnbnehlmfnheafonkfmdidpanj', '_blank');
+                  }}
                 >
                   Install Chrome Extension
                 </a>

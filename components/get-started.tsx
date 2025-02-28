@@ -97,26 +97,7 @@ export function GetStarted() {
           </motion.div>
         </div>
 
-        <motion.div
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-        >
-          <Button
-            asChild
-            size="lg"
-            className="bg-primary text-primary-foreground hover:bg-primary/90"
-          >
-            <a
-              href="https://chrome.google.com/webstore/detail/loadcompanion/leflgffnbnehlmfnheafonkfmdidpanj"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Install Load Companion
-            </a>
-          </Button>
-        </motion.div>
+
       </div>
     </section>
   )
