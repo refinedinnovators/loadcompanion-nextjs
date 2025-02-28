@@ -1,3 +1,5 @@
+'use client'
+
 import { Button } from '@/components/ui/button'
 
 export type CallToActionBlockType = {
@@ -29,6 +31,24 @@ const aboutUsContent: CallToActionBlockType = {
 }
 
 export function AboutUs() {
+  const handleStartTrial = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    window.open('https://chromewebstore.google.com/detail/loadcompanion/leflgffnbnehlmfnheafonkfmdidpanj', '_blank');
+    e.preventDefault();
+  };
+
+  const handleWatchDemo = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const width = 800;
+    const height = 450;
+    const left = (window.screen.width - width) / 2;
+    const top = (window.screen.height - height) / 2;
+    window.open(
+      'https://www.youtube.com/embed/uWPYq7k2wAE',
+      'LoadCompanionDemo',
+      `width=${width},height=${height},top=${top},left=${left},popup=yes`
+    );
+  };
+
   return (
     <section className="bg-gray-50 py-16 sm:py-24">
       <div className="container px-4 sm:px-6 lg:px-8">
@@ -40,15 +60,30 @@ export function AboutUs() {
             {aboutUsContent.description}
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
-            {aboutUsContent.buttons.map((button, index) => (
-              <Button
-                key={index}
-                asChild
-                className={`px-4 py-2 rounded-md ${button.type === 'primary' ? 'bg-[#4F46E5] text-white hover:bg-[#4338CA]' : 'bg-white border-2 border-[#4F46E5] text-[#4F46E5] hover:bg-[#4F46E5]/10'} transition-colors duration-300`}
+            <Button
+              className="px-4 py-2 rounded-md bg-[#4F46E5] text-white hover:bg-[#4338CA] transition-colors duration-300"
+              asChild
+            >
+              <a
+                href="https://chromewebstore.google.com/detail/loadcompanion/leflgffnbnehlmfnheafonkfmdidpanj"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleStartTrial}
               >
-                <a href={button.href}>{button.title}</a>
-              </Button>
-            ))}
+                Start Trial
+              </a>
+            </Button>
+            <Button
+              variant="outline"
+              className="px-4 py-2 rounded-md bg-white border-2 border-[#4F46E5] text-[#4F46E5] hover:bg-[#4F46E5]/10 transition-colors duration-300"
+            >
+              <a
+                href="#"
+                onClick={handleWatchDemo}
+              >
+                Watch Demo
+              </a>
+            </Button>
           </div>
         </div>
       </div>
