@@ -164,8 +164,19 @@ export function Hero() {
                   you covered.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                  <Button className="w-full sm:w-auto bg-[#4F46E5] text-white hover:bg-[#4338CA] text-base sm:text-lg py-2 px-4 sm:px-6">
-                    Start Free Trial
+                  <Button className="w-full sm:w-auto bg-[#4F46E5] text-white hover:bg-[#4338CA] text-base sm:text-lg py-2 px-4 sm:px-6" asChild>
+                    <a
+                      href="https://chromewebstore.google.com/detail/loadcompanion/leflgffnbnehlmfnheafonkfmdidpanj"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => {
+                        // Open Chrome Web Store in a new tab
+                        window.open('https://chromewebstore.google.com/detail/loadcompanion/leflgffnbnehlmfnheafonkfmdidpanj', '_blank');
+                        e.preventDefault();
+                      }}
+                    >
+                      Start Free Trial
+                    </a>
                   </Button>
                   <Button
                     variant="outline"
