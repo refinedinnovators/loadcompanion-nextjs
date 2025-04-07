@@ -38,28 +38,28 @@ const plans: PricingPlan[] = [
       'Multiple Email Addresses',
     ],
   },
-  {
-    name: 'Yearly Plan',
-    description:
-      'Enjoy uninterrupted access to all premium features at an unbeatable value. With the Yearly Plan, you save more compared to monthly billing while ensuring you have the tools you need to streamline your operations year-round.',
-    basePrice: 5.99,
-    interval: '/mo',
-    annualBasePrice: 71.88,
-    featured: true,
-    buttonTitle: 'Get Started Now',
-    buttonHref: 'https://webapp.loadcompanion.com/#/billing',
-    calculateDispatchers: true,
-    features: [
-      'Unlimited Email Sends',
-      'Advanced RPM calculator',
-      'Email Templates',
-      'Google Maps links',
-      'Pop-Up Email Editor',
-      'Works on Dat One, Sylectus',
-      'Send Emails Directly from Comments',
-      'Multiple Email Addresses',
-    ],
-  },
+  // {
+  //   name: 'Yearly Plan',
+  //   description:
+  //     'Enjoy uninterrupted access to all premium features at an unbeatable value. With the Yearly Plan, you save more compared to monthly billing while ensuring you have the tools you need to streamline your operations year-round.',
+  //   basePrice: 5.99,
+  //   interval: '/mo',
+  //   annualBasePrice: 71.88,
+  //   featured: true,
+  //   buttonTitle: 'Get Started Now',
+  //   buttonHref: 'https://webapp.loadcompanion.com/#/billing',
+  //   calculateDispatchers: true,
+  //   features: [
+  //     'Unlimited Email Sends',
+  //     'Advanced RPM calculator',
+  //     'Email Templates',
+  //     'Google Maps links',
+  //     'Pop-Up Email Editor',
+  //     'Works on Dat One, Sylectus',
+  //     'Send Emails Directly from Comments',
+  //     'Multiple Email Addresses',
+  //   ],
+  // },
   {
     name: 'Monthly Plan',
     description:
@@ -97,7 +97,7 @@ function PricingCard({ plan }: { plan: PricingPlan }) {
 
   return (
     <div
-      className={`relative flex flex-col rounded-2xl bg-white p-8 shadow-lg transition-transform hover:scale-105 ${
+      className={`relative flex flex-col rounded-2xl bg-white p-8 shadow-lg transition-transform hover:scale-105 h-full ${
         plan.featured ? 'border-2 border-[#4F46E5]' : 'border border-gray-200'
       }`}
     >
@@ -210,10 +210,16 @@ export function Pricing() {
           workflow today.
         </p>
       </div>
-      <div className="mx-auto max-w-7xl grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {plans.map((plan) => (
-          <PricingCard key={plan.name} plan={plan} />
-        ))}
+      <div className="mx-auto max-w-7xl">
+        <div className="flex justify-center">
+          <div className={`grid gap-8 ${plans.length === 2 ? 'grid-cols-1 md:grid-cols-2 max-w-4xl' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl'}`}>
+            {plans.map((plan) => (
+              <div key={plan.name} className="h-full">
+                <PricingCard plan={plan} />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )
