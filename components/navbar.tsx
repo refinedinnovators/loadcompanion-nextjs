@@ -14,6 +14,7 @@ export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const pathname = usePathname()
   const isContactPage = pathname === '/contact'
+  const isGetStartedPage = pathname === '/get-started'
 
   const handleNavigation = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -21,8 +22,8 @@ export function Navbar() {
   ) => {
     e.preventDefault()
     
-    if (isContactPage) {
-      // If on contact page, navigate to home page with the section hash
+    if (isContactPage || isGetStartedPage) {
+      // If on contact or get-started page, navigate to home page with the section hash
       window.location.href = `/#${sectionId}`
     } else {
       // If on home page, scroll to section
@@ -89,21 +90,21 @@ export function Navbar() {
         </div>
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
           <Link
-            href={isContactPage ? '/#features' : '#features'}
+            href={(isContactPage || isGetStartedPage) ? '/#features' : '#features'}
             onClick={(e) => handleNavigation(e, 'features')}
             className="text-gray-300 transition-colors hover:text-white"
           >
             Features
           </Link>
           <Link
-            href={isContactPage ? '/#pricing' : '#pricing'}
+            href={(isContactPage || isGetStartedPage) ? '/#pricing' : '#pricing'}
             onClick={(e) => handleNavigation(e, 'pricing')}
             className="text-gray-300 transition-colors hover:text-white"
           >
             Pricing
           </Link>
           <Link
-            href={isContactPage ? '/#faq' : '#faq'}
+            href={(isContactPage || isGetStartedPage) ? '/#faq' : '#faq'}
             onClick={(e) => handleNavigation(e, 'faq')}
             className="text-gray-300 transition-colors hover:text-white"
           >
@@ -173,21 +174,21 @@ export function Navbar() {
         <div className="md:hidden bg-gray-900/95 backdrop-blur supports-[backdrop-filter]:bg-gray-900/75 border-t border-gray-800">
           <nav className="flex flex-col items-start space-y-4 p-4 text-sm font-medium">
             <Link
-              href={isContactPage ? '/#features' : '#features'}
+              href={(isContactPage || isGetStartedPage) ? '/#features' : '#features'}
               onClick={(e) => handleNavigation(e, 'features')}
               className="text-gray-300 transition-colors hover:text-white w-full"
             >
               Features
             </Link>
             <Link
-              href={isContactPage ? '/#pricing' : '#pricing'}
+              href={(isContactPage || isGetStartedPage) ? '/#pricing' : '#pricing'}
               onClick={(e) => handleNavigation(e, 'pricing')}
               className="text-gray-300 transition-colors hover:text-white w-full"
             >
               Pricing
             </Link>
             <Link
-              href={isContactPage ? '/#faq' : '#faq'}
+              href={(isContactPage || isGetStartedPage) ? '/#faq' : '#faq'}
               onClick={(e) => handleNavigation(e, 'faq')}
               className="text-gray-300 transition-colors hover:text-white w-full"
             >
