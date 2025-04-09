@@ -33,7 +33,7 @@ export const socialLinks: SocialLink[] = [
     iconName: 'Facebook',
     title: 'Facebook',
     content: 'LoadCompanion',
-    link: 'https://www.facebook.com/loadcompanion',
+    link: 'https://www.facebook.com/share/7bYqG7AcLpRM6ftm/?mibextid=eQY6cl',
   },
   {
     iconName: 'Instagram',
