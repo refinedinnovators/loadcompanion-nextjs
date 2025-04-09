@@ -1,9 +1,10 @@
 'use client'
 
 import type React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 
 import { Button } from '@/components/ui/button'
 
@@ -11,16 +12,26 @@ const navbarStyles = ``
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const pathname = usePathname()
+  const isContactPage = pathname === '/contact'
 
-  const scrollToSection = (
+  const handleNavigation = (
     e: React.MouseEvent<HTMLAnchorElement>,
     sectionId: string
   ) => {
     e.preventDefault()
-    const section = document.getElementById(sectionId)
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' })
+    
+    if (isContactPage) {
+      // If on contact page, navigate to home page with the section hash
+      window.location.href = `/#${sectionId}`
+    } else {
+      // If on home page, scroll to section
+      const section = document.getElementById(sectionId)
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' })
+      }
     }
+    
     setIsMenuOpen(false)
   }
 
@@ -78,22 +89,22 @@ export function Navbar() {
         </div>
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
           <Link
-            href="#features"
-            onClick={(e) => scrollToSection(e, 'features')}
+            href={isContactPage ? '/#features' : '#features'}
+            onClick={(e) => handleNavigation(e, 'features')}
             className="text-gray-300 transition-colors hover:text-white"
           >
             Features
           </Link>
           <Link
-            href="#pricing"
-            onClick={(e) => scrollToSection(e, 'pricing')}
+            href={isContactPage ? '/#pricing' : '#pricing'}
+            onClick={(e) => handleNavigation(e, 'pricing')}
             className="text-gray-300 transition-colors hover:text-white"
           >
             Pricing
           </Link>
           <Link
-            href="#faq"
-            onClick={(e) => scrollToSection(e, 'faq')}
+            href={isContactPage ? '/#faq' : '#faq'}
+            onClick={(e) => handleNavigation(e, 'faq')}
             className="text-gray-300 transition-colors hover:text-white"
           >
             FAQ
@@ -162,22 +173,22 @@ export function Navbar() {
         <div className="md:hidden bg-gray-900/95 backdrop-blur supports-[backdrop-filter]:bg-gray-900/75 border-t border-gray-800">
           <nav className="flex flex-col items-start space-y-4 p-4 text-sm font-medium">
             <Link
-              href="#features"
-              onClick={(e) => scrollToSection(e, 'features')}
+              href={isContactPage ? '/#features' : '#features'}
+              onClick={(e) => handleNavigation(e, 'features')}
               className="text-gray-300 transition-colors hover:text-white w-full"
             >
               Features
             </Link>
             <Link
-              href="#pricing"
-              onClick={(e) => scrollToSection(e, 'pricing')}
+              href={isContactPage ? '/#pricing' : '#pricing'}
+              onClick={(e) => handleNavigation(e, 'pricing')}
               className="text-gray-300 transition-colors hover:text-white w-full"
             >
               Pricing
             </Link>
             <Link
-              href="#faq"
-              onClick={(e) => scrollToSection(e, 'faq')}
+              href={isContactPage ? '/#faq' : '#faq'}
+              onClick={(e) => handleNavigation(e, 'faq')}
               className="text-gray-300 transition-colors hover:text-white w-full"
             >
               FAQ
